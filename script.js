@@ -15,8 +15,8 @@ document.addEventListener("DOMContentLoaded", () => {
   // DATA
   // =========================
   const atlas = {
-    skull1: { image: "images/lateral.JPG", labels: [
-      { name: "Arco Cigomático", info: "El cameron es un aweonao", x: 0.395, y: 0.315 },
+    skull1: { image: "images/lateral.jpg", labels: [
+      { name: "Arco Cigomático", info: "El Arco Cigomático...", x: 0.395, y: 0.315 },
       { name: "Agujero Infraorbitario", info: "El agujero infraorbitario...", x: 0.655, y: 0.360 },
       { name: "Proceso Cigomático", info: "El Proceso Cigomático...", x: 0.275, y: 0.360 },
       { name: "Hueso Cigomático", info: "El Hueso Cigomático...", x: 0.455, y: 0.335},
@@ -25,13 +25,13 @@ document.addEventListener("DOMContentLoaded", () => {
       { name: "Sutura Escamosa", info: "La Sutura Escamosa...", x: 0.197, y: 0.305},
       { name: "Sutura Coronal", info: "La Sutura Coronal...", x: 0.261, y: 0.227}
     ]},
-    skull2: { image: "images/ventral.JPG", labels: [
+    skull2: { image: "images/ventral.jpg", labels: [
       { name: "Agujero Magno", info: "El agujero magno...", x: 0.145, y: 0.33}
     ]},
-    skull3: { image: "images/dorsal.JPG", labels: [
+    skull3: { image: "images/dorsal.jpg", labels: [
       { name: "Hueso Frontal", info: "El hueso frontal...", x: 0.35, y: 0.45 }
     ]},
-    skull4: { image: "images/craneal.JPG", labels: [
+    skull4: { image: "images/craneal.jpg", labels: [
       { name: "Lamina Cribosa", info: "La lamina cribosa...", x: 0.35, y: 0.45 }
     ]}
   };
