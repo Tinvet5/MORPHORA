@@ -1,0 +1,29 @@
+MORPHORA V3.2 — SPECIES NAVIGATION
+
+ADDED
+- JSON-driven species catalog.
+- Species landing screen with five planned species.
+- Available and coming-soon card states.
+- Canine anatomy hub.
+- Anatomical-system cards.
+- Canine skull collection entry point.
+- Persistent left-side library drawer.
+- Viewer breadcrumbs.
+- Hash-based routes compatible with GitHub Pages.
+- Direct links to individual skull views.
+- Browser back/forward navigation.
+- Continue-studying action using localStorage.
+- Persistent light/dark theme selection.
+- Responsive desktop, tablet and mobile navigation layouts.
+
+ARCHITECTURE
+- Added navigation.js as a separate application-navigation module.
+- Added data/catalog.json.
+- Added data/species/dog.json.
+- Exposed a small window.MorphoraAtlas API from script.js.
+- Preserved the Step 7 view manifests and view JSON files.
+- Kept the OpenSeadragon viewer mounted between screens for a stable viewport.
+
+BRANDING
+- Added a temporary CSS MORPHORA monogram and wordmark.
+- Official logo assets can replace the temporary header branding later without changing navigation behavior.
