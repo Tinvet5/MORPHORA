@@ -1,0 +1,71 @@
+{
+  "schemaVersion": 1,
+  "id": "dog",
+  "name": "Dog",
+  "scientificName": "Canis lupus familiaris",
+  "summary": "Study canine morphology through high-resolution anatomical photographs and interactive labels.",
+  "systems": [
+    {
+      "id": "skeletal",
+      "name": "Skeletal system",
+      "description": "Bones, joints, foramina, sutures and regional osteology.",
+      "status": "available",
+      "collections": [
+        {
+          "id": "skull",
+          "name": "Canine skull",
+          "description": "Five high-resolution osteology views with interactive anatomical labels.",
+          "status": "available",
+          "manifestPath": "data/atlas.json",
+          "route": "#/species/dog/skeletal/skull"
+        },
+        {
+          "id": "vertebral-column",
+          "name": "Vertebral column",
+          "description": "Regional vertebral anatomy and articulations.",
+          "status": "coming-soon"
+        },
+        {
+          "id": "thoracic-limb",
+          "name": "Thoracic limb",
+          "description": "Bones and joints of the canine forelimb.",
+          "status": "coming-soon"
+        },
+        {
+          "id": "pelvic-limb",
+          "name": "Pelvic limb",
+          "description": "Bones and joints of the canine hindlimb.",
+          "status": "coming-soon"
+        }
+      ]
+    },
+    {
+      "id": "muscular",
+      "name": "Muscular system",
+      "description": "Regional muscles, attachments and functional groups.",
+      "status": "coming-soon",
+      "collections": []
+    },
+    {
+      "id": "nervous",
+      "name": "Nervous system",
+      "description": "Central and peripheral neuroanatomy.",
+      "status": "coming-soon",
+      "collections": []
+    },
+    {
+      "id": "cardiovascular",
+      "name": "Cardiovascular system",
+      "description": "Cardiac anatomy and major vascular pathways.",
+      "status": "coming-soon",
+      "collections": []
+    },
+    {
+      "id": "digestive",
+      "name": "Digestive system",
+      "description": "Oral cavity, gastrointestinal tract and associated organs.",
+      "status": "coming-soon",
+      "collections": []
+    }
+  ]
+}
