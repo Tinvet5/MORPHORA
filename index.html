@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MORPHORA</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/openseadragon/4.1.0/openseadragon.min.js"></script>
+</head>
+
+<body>
+  <header class="topbar">
+    <h1>MORPHORA</h1>
+  </header>
+
+  <main
+    id="viewer"
+    aria-label="Interactive anatomical image viewer"
+    aria-busy="false"
+  ></main>
+
+  <section
+    id="viewerState"
+    class="viewer-state"
+    data-state="loading"
+    aria-live="polite"
+    aria-atomic="true"
+    aria-hidden="true"
+    hidden
+  >
+    <div id="viewerStateCard" class="viewer-state-card" role="status">
+      <div id="viewerStateIcon" class="viewer-state-icon" aria-hidden="true"></div>
+      <p id="viewerStateEyebrow" class="viewer-state-eyebrow">Viewer status</p>
+      <h2 id="viewerStateTitle">Loading anatomical image</h2>
+      <p id="viewerStateMessage" class="viewer-state-message">
+        Preparing the selected high-resolution view.
+      </p>
+
+      <div id="viewerStateActions" class="viewer-state-actions" hidden>
+        <button id="retryViewerState" class="viewer-state-button viewer-state-button-primary" type="button" hidden>
+          Retry
+        </button>
+        <button id="dismissViewerState" class="viewer-state-button" type="button" hidden>
+          Dismiss
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <div class="menu">
+    <button
+      id="menuBtn"
+      class="menu-btn"
+      type="button"
+      aria-label="Open atlas controls"
+      aria-controls="menuPanel"
+      aria-expanded="false"
+    >
+      ☰
+    </button>
+
+    <div id="menuPanel" class="menu-panel">
+      <label for="searchInput" class="visually-hidden">Search anatomical labels</label>
+      <input
+        id="searchInput"
+        type="search"
+        placeholder="Search labels..."
+        autocomplete="off"
+        aria-describedby="searchStatus"
+      >
+      <p id="searchStatus" class="search-status" role="status" aria-live="polite" hidden></p>
+
+      <div class="menu-section" data-title="Viewer">
+        <button id="toggleLabels" type="button">👁 Labels</button>
+        <button id="resetView" type="button">🔄 Reset View</button>
+      </div>
+
+      <div
+        id="viewButtons"
+        class="menu-section"
+        data-title="Anatomical views"
+        aria-label="Anatomical views"
+      ></div>
+
+      <div class="menu-section" data-title="Display and notes">
+        <button id="toggleTheme" type="button">🌙 Toggle Theme</button>
+        <button id="addAnnotation" type="button">✏ Add Note</button>
+      </div>
+    </div>
+  </div>
+
+  <aside
+    id="infoPanel"
+    class="info-panel"
+    role="dialog"
+    aria-modal="false"
+    aria-hidden="true"
+    aria-labelledby="infoTitle"
+    aria-describedby="infoText"
+  >
+    <div class="info-panel-header">
+      <div class="info-panel-heading">
+        <span id="infoEyebrow" class="info-panel-eyebrow">Anatomical structure</span>
+        <h3 id="infoTitle">Structure information</h3>
+      </div>
+
+      <button
+        id="closeInfoPanel"
+        class="info-panel-close"
+        type="button"
+        aria-label="Close information panel"
+      >
+        ×
+      </button>
+    </div>
+
+    <div class="info-panel-body">
+      <p id="infoText"></p>
+    </div>
+  </aside>
+
+  <script src="script.js"></script>
+</body>
+</html>

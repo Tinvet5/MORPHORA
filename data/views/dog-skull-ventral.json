@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "id": "dog-skull-ventral",
+  "title": "Canine skull — ventral view",
+  "orientation": "ventral",
+  "image": {
+    "src": "images/ventral.jpg",
+    "width": 6000,
+    "height": 4000,
+    "alt": "Ventral view of a canine skull"
+  },
+  "labels": [
+    {
+      "id": "foramen-magnum-ventral",
+      "name": "Agujero Magno",
+      "description": "El agujero magno...",
+      "position": { "x": 0.145, "y": 0.33 }
+    }
+  ]
+}
