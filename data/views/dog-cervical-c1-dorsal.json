@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "dog-cervical-c1-dorsal",
+  "title": "Canine atlas vertebra — dorsal view",
+  "orientation": "dorsal",
+  "image": {
+    "src": "images/dog/vertebral-column/cervical/dog-cervical-c1-dorsal.jpg",
+    "width": 6000,
+    "height": 4000,
+    "alt": "Dorsal view of the first cervical vertebra of a dog"
+  },
+  "labels": []
+}

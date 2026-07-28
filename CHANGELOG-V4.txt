@@ -1,0 +1,11 @@
+MORPHORA V4.0 — BRAND INTEGRATION
+
+- Integrated finalized MORPHORA logo and icon assets.
+- Added dark/light logo switching.
+- Added SVG favicon and high-resolution touch icon.
+- Rebuilt the discovery hero around the official brand lockup.
+- Reworked the visual system around official navy #001030 and teal #21515e.
+- Redesigned header, cards, species hub, library drawer, atlas controls, information panel and loading states.
+- Added responsive V4 layouts.
+- Bumped CSS, JavaScript and JSON cache version to 4.0.0.
+- Preserved all V3.3 multi-collection and atlas functionality.

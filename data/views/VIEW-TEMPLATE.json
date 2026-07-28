@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "dog-example-view",
+  "title": "Canine example — example view",
+  "orientation": "example",
+  "image": {
+    "src": "images/dog/example/dog-example-view.jpg",
+    "width": 6000,
+    "height": 4000,
+    "alt": "Example anatomical view of a dog"
+  },
+  "labels": []
+}

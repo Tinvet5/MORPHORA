@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "id": "dog-example-collection",
+  "title": "Canine Example Collection",
+  "speciesId": "dog",
+  "systemId": "skeletal",
+  "collectionId": "example-collection",
+  "defaultViewId": "dog-example-view",
+  "views": [
+    {
+      "id": "dog-example-view",
+      "buttonLabel": "Example view",
+      "dataPath": "data/views/dog-example-view.json"
+    }
+  ]
+}

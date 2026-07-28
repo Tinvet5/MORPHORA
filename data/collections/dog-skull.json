@@ -1,0 +1,42 @@
+{
+  "schemaVersion": 1,
+  "id": "morphora-canine-skull",
+  "title": "Canine Skull Atlas",
+  "species": {
+    "id": "dog",
+    "commonName": "Dog",
+    "scientificName": "Canis lupus familiaris"
+  },
+  "region": {
+    "id": "skull",
+    "name": "Skull"
+  },
+  "defaultViewId": "dog-skull-lateral",
+  "views": [
+    {
+      "id": "dog-skull-lateral",
+      "buttonLabel": "Lateral",
+      "dataPath": "data/views/dog-skull-lateral.json"
+    },
+    {
+      "id": "dog-skull-ventral",
+      "buttonLabel": "Ventral",
+      "dataPath": "data/views/dog-skull-ventral.json"
+    },
+    {
+      "id": "dog-skull-dorsal",
+      "buttonLabel": "Dorsal",
+      "dataPath": "data/views/dog-skull-dorsal.json"
+    },
+    {
+      "id": "dog-skull-cranial",
+      "buttonLabel": "Frontal",
+      "dataPath": "data/views/dog-skull-cranial.json"
+    },
+    {
+      "id": "dog-skull-caudal",
+      "buttonLabel": "Caudal",
+      "dataPath": "data/views/dog-skull-caudal.json"
+    }
+  ]
+}

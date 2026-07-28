@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "id": "dog-skull-caudal",
+  "title": "Canine skull — caudal view",
+  "orientation": "caudal",
+  "image": {
+    "src": "images/caudal.jpg",
+    "width": 6000,
+    "height": 4000,
+    "alt": "Caudal view of a canine skull"
+  },
+  "labels": [
+    {
+      "id": "foramen-magnum-caudal",
+      "name": "Agujero Magno",
+      "description": "El agujero magno...",
+      "position": { "x": 0.52, "y": 0.53 }
+    }
+  ]
+}

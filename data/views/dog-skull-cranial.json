@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "id": "dog-skull-cranial",
+  "title": "Canine skull — cranial view",
+  "orientation": "cranial",
+  "image": {
+    "src": "images/craneal.jpg",
+    "width": 6000,
+    "height": 4000,
+    "alt": "Cranial view of a canine skull"
+  },
+  "labels": [
+    {
+      "id": "cribriform-plate",
+      "name": "Lamina Cribosa",
+      "description": "La lamina cribosa...",
+      "position": { "x": 0.35, "y": 0.45 }
+    }
+  ]
+}

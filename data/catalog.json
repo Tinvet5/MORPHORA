@@ -1,0 +1,42 @@
+{
+  "schemaVersion": 1,
+  "defaultSpeciesId": "dog",
+  "species": [
+    {
+      "id": "dog",
+      "name": "Dog",
+      "scientificName": "Canis lupus familiaris",
+      "description": "Explore the current canine anatomy collections available in MORPHORA.",
+      "status": "available",
+      "dataPath": "data/species/dog.json"
+    },
+    {
+      "id": "horse",
+      "name": "Horse",
+      "scientificName": "Equus caballus",
+      "description": "Equine anatomy collections are planned for a future release.",
+      "status": "coming-soon"
+    },
+    {
+      "id": "cat",
+      "name": "Cat",
+      "scientificName": "Felis catus",
+      "description": "Feline anatomy collections are planned for a future release.",
+      "status": "coming-soon"
+    },
+    {
+      "id": "cattle",
+      "name": "Cattle",
+      "scientificName": "Bos taurus",
+      "description": "Bovine anatomy collections are planned for a future release.",
+      "status": "coming-soon"
+    },
+    {
+      "id": "rabbit",
+      "name": "Rabbit",
+      "scientificName": "Oryctolagus cuniculus",
+      "description": "Lagomorph anatomy collections are planned for a future release.",
+      "status": "coming-soon"
+    }
+  ]
+}
