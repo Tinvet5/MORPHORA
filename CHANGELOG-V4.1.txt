@@ -1,9 +1,0 @@
-MORPHORA V4.1 — Wide Logo Hero
-
-- Replaced the boxed landing-page logo treatment with a full-width centered hero.
-- Removed the logo card border, rounded container, and circular decorative rings.
-- Added a restrained brand glow and horizontal scientific divider.
-- Centered the landing headline, description, actions, and platform principles.
-- Added responsive logo scaling for desktop, tablet, and mobile.
-- Increased cache version from 4.0.0 to 4.1.0.
-- No atlas, routing, JSON, annotation, or viewer behavior was changed.
