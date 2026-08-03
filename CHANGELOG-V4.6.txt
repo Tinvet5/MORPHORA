@@ -1,0 +1,29 @@
+MORPHORA V4.6 — Responsive, Accessibility & Usability Audit
+
+PUBLIC ATLAS
+- Added a five-action mobile atlas toolbar.
+- Reworked mobile controls into a bottom sheet.
+- Added phone safe-area support.
+- Improved mobile information-panel, note-drawer and navigator positioning.
+- Increased touch target sizes.
+- Increased drag threshold on coarse-pointer devices.
+- Added skip navigation and global live announcements.
+- Added reusable focus trapping and reliable focus restoration.
+- Added focus management to Library, search, My Notes and annotation editing.
+- Added stronger keyboard focus indicators.
+- Added high-contrast and forced-color support.
+- Expanded reduced-motion behavior.
+- Improved short landscape layouts.
+
+CONTENT STUDIO
+- Added Library / Viewer / Inspector mobile panel tabs.
+- Added a small-device precision-workspace advisory.
+- Added larger touch handles and controls.
+- Improved tablet and phone layouts.
+- Added accessibility announcements and skip navigation.
+- Preserved unsaved-change protection and all V4.4.1 editing behavior.
+
+TECHNICAL
+- Added accessibility.js as a shared focus and announcement utility.
+- Updated cache version to 4.6.0.
+- Preserved V4.5 annotation storage and JSON compatibility.

@@ -1,0 +1,25 @@
+MORPHORA V4.5 — PERSISTENT PERSONAL ANNOTATIONS
+
+Added
+- View-specific localStorage persistence for personal annotations.
+- Automatic restoration whenever an anatomical view opens.
+- Dedicated note editor for title, description, and color.
+- Direct pointer/touch dragging with position saving on release.
+- My notes drawer with current-view search, count, focus, edit, and delete actions.
+- Information-panel actions for editing, recoloring, and deleting personal notes.
+- Export of all saved notes to a JSON backup.
+- Import with MERGE or REPLACE modes.
+- Clear-current-view and clear-all controls.
+- Storage/privacy explanation and saved/error toast feedback.
+- Corrupted localStorage recovery backup.
+
+Changed
+- Annotation creation now uses a branded editor dialog instead of browser prompts.
+- Note overlays include compact edit and delete controls.
+- Public asset/data cache version increased to 4.5.0.
+- Content Studio asset version increased to 4.5.0 without changing its editing model.
+
+Preserved
+- Official anatomical labels remain in view JSON files.
+- Personal notes remain private and separate from official atlas content.
+- V4.4.1 Content Studio, multi-collection navigation, and viewer behavior remain available.

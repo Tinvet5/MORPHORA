@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="theme-color" content="#001030">
+  <meta name="description" content="Private MORPHORA workspace for authoring anatomical labels and exporting validated view JSON.">
+  <title>MORPHORA V4.6 Content Studio</title>
+
+  <link rel="icon" type="image/svg+xml" href="assets/branding/morphora-icon-primary.svg?v=4.6.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="studio/studio.css?v=4.6.0">
+
+  <script>
+    try {
+      const savedTheme = localStorage.getItem("morphora:theme");
+      const prefersLight = window.matchMedia("(prefers-color-scheme: light)").matches;
+      if (savedTheme === "light" || (!savedTheme && prefersLight)) {
+        document.documentElement.classList.add("preload-light-theme");
+      }
+    } catch (error) {
+      // The complete theme controller runs after the document is ready.
+    }
+  </script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/openseadragon/4.1.0/openseadragon.min.js"></script>
+</head>
+<body data-studio-panel="workspace">
+<a class="skip-link" href="#studioApp">Skip to Studio workspace</a>
+<div id="globalLiveRegion" class="visually-hidden" aria-live="polite" aria-atomic="true"></div>
+  <header class="studio-header">
+    <a class="studio-brand" href="index.html#/species" aria-label="Return to MORPHORA">
+      <span class="studio-brand-icon" aria-hidden="true">
+        <img class="theme-logo theme-logo-dark" src="assets/branding/morphora-icon-white.svg" alt="">
+        <img class="theme-logo theme-logo-light" src="assets/branding/morphora-icon-primary.svg" alt="">
+      </span>
+      <span>
+        <strong>MORPHORA</strong>
+        <small>Content Studio</small>
+      </span>
+    </a>
+
+    <div class="studio-document-status" aria-live="polite">
+      <span class="status-dot" id="documentStatusDot" aria-hidden="true"></span>
+      <span id="documentStatusText">Preparing Studio…</span>
+    </div>
+
+    <div class="studio-header-actions">
+      <button class="icon-button" id="themeToggle" type="button" aria-label="Toggle light and dark theme" title="Toggle theme">☾</button>
+      <button class="secondary-button" id="saveDraftButton" type="button">Save draft</button>
+      <button class="secondary-button" id="copyJsonButton" type="button">Copy JSON</button>
+      <button class="primary-button" id="exportJsonButton" type="button">Export JSON</button>
+    </div>
+  </header>
+
+
+  <section class="studio-device-advisory" id="studioDeviceAdvisory" role="status">
+    <strong>Precision workspace</strong>
+    <span>For accurate label placement, MORPHORA Studio works best on a tablet in landscape mode or a desktop computer.</span>
+    <button id="dismissStudioAdvisory" type="button" aria-label="Dismiss device advice">×</button>
+  </section>
+
+  <nav class="studio-mobile-tabs" aria-label="Studio panels">
+    <button id="mobileLibraryTab" type="button" data-studio-target="library" aria-pressed="false">Library</button>
+    <button id="mobileWorkspaceTab" type="button" data-studio-target="workspace" aria-pressed="true">Viewer</button>
+    <button id="mobileInspectorTab" type="button" data-studio-target="inspector" aria-pressed="false">Inspector</button>
+  </nav>
+
+  <main class="studio-layout" id="studioApp" tabindex="-1">
+    <aside class="studio-panel studio-library-panel" data-studio-panel="library" aria-label="Atlas content library">
+      <div class="panel-heading">
+        <p class="eyebrow">Content source</p>
+        <h1>Atlas library</h1>
+        <p>Select a species, collection and view to edit.</p>
+      </div>
+
+      <div class="selector-stack">
+        <label>
+          <span>Species</span>
+          <select id="speciesSelect"></select>
+        </label>
+        <label>
+          <span>System</span>
+          <select id="systemSelect"></select>
+        </label>
+        <label>
+          <span>Collection</span>
+          <select id="collectionSelect"></select>
+        </label>
+        <label>
+          <span>View</span>
+          <select id="viewSelect"></select>
+        </label>
+      </div>
+
+      <div class="panel-divider"></div>
+
+      <div class="label-list-heading">
+        <div>
+          <p class="eyebrow">View labels</p>
+          <h2>Structures <span id="labelCount">0</span></h2>
+        </div>
+        <button class="small-icon-button" id="addLabelFromSidebar" type="button" title="Add a label" aria-label="Add a label">＋</button>
+      </div>
+
+      <label class="search-field">
+        <span aria-hidden="true">⌕</span>
+        <input id="labelFilterInput" type="search" autocomplete="off" placeholder="Filter labels…">
+      </label>
+
+      <div class="label-list" id="labelList" role="listbox" aria-label="Labels in the selected anatomical view"></div>
+
+      <div class="library-footer-actions">
+        <button class="text-button" id="importJsonButton" type="button">Import view JSON</button>
+        <input id="importJsonInput" type="file" accept="application/json,.json" hidden>
+        <button class="text-button danger-text" id="resetSourceButton" type="button">Reset to repository data</button>
+      </div>
+    </aside>
+
+    <section class="studio-workspace" data-studio-panel="workspace" aria-label="Anatomical label editor">
+      <div class="workspace-toolbar">
+        <div class="mode-switcher" role="group" aria-label="Studio editing mode">
+          <button class="mode-button active" id="browseModeButton" type="button" data-mode="browse" aria-pressed="true">Browse</button>
+          <button class="mode-button" id="addModeButton" type="button" data-mode="add" aria-pressed="false">Add label</button>
+          <button class="mode-button" id="repositionModeButton" type="button" data-mode="reposition" aria-pressed="false" disabled>Reposition anchor</button>
+          <button class="mode-button" id="previewModeButton" type="button" data-mode="preview" aria-pressed="false">Student preview</button>
+        </div>
+
+        <div class="toolbar-actions">
+          <button class="tool-button" id="undoButton" type="button" disabled title="Undo (Ctrl/Cmd + Z)">↶ Undo</button>
+          <button class="tool-button" id="redoButton" type="button" disabled title="Redo (Ctrl/Cmd + Shift + Z)">↷ Redo</button>
+          <button class="tool-button" id="resetViewButton" type="button">Reset view</button>
+        </div>
+      </div>
+
+      <div class="viewer-shell" id="viewerShell">
+        <div class="studio-viewer" id="studioViewer" aria-label="MORPHORA anatomical image editor"></div>
+
+        <section class="studio-viewer-state" id="studioViewerState" role="status" aria-live="polite">
+          <div class="viewer-state-card">
+            <span class="viewer-state-logo" aria-hidden="true">
+              <img class="theme-logo theme-logo-dark" src="assets/branding/morphora-icon-white.svg" alt="">
+              <img class="theme-logo theme-logo-light" src="assets/branding/morphora-icon-primary.svg" alt="">
+            </span>
+            <p class="eyebrow" id="viewerStateEyebrow">Content Studio</p>
+            <h2 id="viewerStateTitle">Loading atlas data</h2>
+            <p id="viewerStateMessage">Preparing the anatomical content library.</p>
+            <button class="primary-button" id="retryStudioButton" type="button" hidden>Retry</button>
+          </div>
+        </section>
+
+        <div class="mode-guidance" id="modeGuidance" aria-live="polite">
+          Browse mode: select a label to edit it, drag its handles, or use Reposition anchor to place it with one click.
+        </div>
+      </div>
+
+      <footer class="workspace-footer">
+        <div>
+          <span id="activeViewTitle">No view selected</span>
+          <span class="footer-separator">·</span>
+          <span id="imagePathText">—</span>
+        </div>
+        <div>
+          <span id="coordinateReadout">Anchor: —</span>
+        </div>
+      </footer>
+    </section>
+
+    <aside class="studio-panel studio-inspector-panel" data-studio-panel="inspector" aria-label="Selected label inspector">
+      <div class="panel-heading inspector-heading">
+        <div>
+          <p class="eyebrow">Label inspector</p>
+          <h2 id="inspectorTitle">No label selected</h2>
+        </div>
+        <span class="selection-index" id="selectionIndex">—</span>
+      </div>
+
+      <div class="empty-inspector" id="emptyInspector">
+        <span aria-hidden="true">◎</span>
+        <h3>Select a structure</h3>
+        <p>Choose an existing label from the image or list, or enter Add label mode and click the anatomical image.</p>
+      </div>
+
+      <form class="label-form" id="labelForm" hidden>
+        <label>
+          <span>Structure name <strong aria-hidden="true">*</strong></span>
+          <input id="labelNameInput" type="text" required autocomplete="off">
+        </label>
+
+        <label>
+          <span>Identifier <strong aria-hidden="true">*</strong></span>
+          <div class="inline-field">
+            <input id="labelIdInput" type="text" required autocomplete="off" spellcheck="false">
+            <button class="field-action-button" id="generateIdButton" type="button">Generate</button>
+          </div>
+          <small>Lowercase letters, numbers and hyphens only.</small>
+        </label>
+
+        <label>
+          <span>Description</span>
+          <textarea id="labelDescriptionInput" rows="7" placeholder="Add the anatomical description or leave it pending."></textarea>
+        </label>
+
+        <div class="field-grid">
+          <label>
+            <span>Category</span>
+            <select id="labelCategoryInput">
+              <option value="">Not assigned</option>
+              <option value="bone">Bone</option>
+              <option value="bone-landmark">Bone landmark</option>
+              <option value="foramen">Foramen</option>
+              <option value="suture">Suture</option>
+              <option value="process">Process</option>
+              <option value="joint">Joint</option>
+              <option value="muscle">Muscle</option>
+              <option value="organ">Organ</option>
+              <option value="vessel">Vessel</option>
+              <option value="nerve">Nerve</option>
+              <option value="other">Other</option>
+            </select>
+          </label>
+
+          <label>
+            <span>Publishing status</span>
+            <select id="labelStatusInput">
+              <option value="draft">Draft</option>
+              <option value="review">Needs review</option>
+              <option value="published">Published</option>
+            </select>
+          </label>
+        </div>
+
+        <fieldset class="coordinate-fieldset">
+          <legend>Anchor position</legend>
+          <label>X <input id="anchorXInput" type="number" min="0" max="1" step="0.0001"></label>
+          <label>Y <input id="anchorYInput" type="number" min="0" max="1" step="0.0001"></label>
+          <button class="text-button" id="repositionAnchorButton" type="button">Choose a new point on the image</button>
+        </fieldset>
+
+        <fieldset class="coordinate-fieldset">
+          <legend>Label position</legend>
+          <label>X <input id="labelXInput" type="number" min="0" max="1" step="0.0001"></label>
+          <label>Y <input id="labelYInput" type="number" min="0" max="1" step="0.0001"></label>
+          <button class="text-button" id="resetLabelPositionButton" type="button">Reset automatic position</button>
+        </fieldset>
+
+        <div class="inspector-actions">
+          <button class="secondary-button" id="duplicateLabelButton" type="button">Duplicate</button>
+          <button class="danger-button" id="deleteLabelButton" type="button">Delete</button>
+        </div>
+      </form>
+
+      <section class="validation-panel" aria-labelledby="validationTitle">
+        <div class="validation-heading">
+          <div>
+            <p class="eyebrow">Data quality</p>
+            <h2 id="validationTitle">Validation</h2>
+          </div>
+          <span class="validation-badge" id="validationBadge">Not checked</span>
+        </div>
+        <ul id="validationList">
+          <li>Select a view to begin validation.</li>
+        </ul>
+      </section>
+    </aside>
+  </main>
+
+  <div class="studio-toast" id="studioToast" role="status" aria-live="polite" hidden></div>
+
+  <script src="accessibility.js?v=4.6.0"></script>
+  <script src="studio/studio.js?v=4.6.0"></script>
+</body>
+</html>

@@ -1,0 +1,17 @@
+MORPHORA V4.4.1 — Interaction Improvement
+
+Added
+- Dedicated Reposition anchor mode in the Studio toolbar.
+- Inspector action: Choose a new point on the image.
+- One-click anchor placement for the selected label.
+- Preservation of the label box's relative offset after anchor movement.
+- Visual pulse and focus treatment for the selected anchor.
+- Keyboard shortcut R for Reposition anchor.
+- Automatic return to Browse mode after placement.
+- Undo/Redo support for repositioning.
+
+Fixed
+- Removed a duplicated `id` property in newly created label objects.
+
+Cache version
+- Increased from 4.4.0 to 4.4.1.
