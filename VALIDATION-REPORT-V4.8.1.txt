@@ -1,0 +1,41 @@
+MORPHORA V4.8.1 — Validation report
+Release: 4.8.1
+
+Command: npm run check
+
+JavaScript syntax
+✓ app-config.js
+✓ performance.js
+✓ accessibility.js
+✓ script.js
+✓ study.js
+✓ navigation.js
+✓ studio/studio.js
+✓ service-worker.js
+
+Static checks
+✓ HTML references resolved
+✓ JavaScript DOM ids resolved
+✓ Local HTML assets found
+✓ CSS braces balanced
+✓ Service-worker shell assets found
+
+Atlas validation
+✓ Species checked: 1
+✓ Collections checked: 2
+✓ Views checked: 6
+✓ Labels checked: 12
+✓ Deep Zoom views: 5
+✓ Standard images: 1
+
+Result: 0 errors, 1 expected warning.
+Expected warning: dog-cervical-c1-dorsal image asset is still intentionally absent from the coming-soon cervical framework.
+
+V4.8.1-specific implementation checks
+✓ Place-anchor and Place-label controls have matching DOM references.
+✓ Image upload dialog controls have matching DOM references.
+✓ Uploaded local runtime image URLs are stripped from exported JSON.
+✓ Direct project-folder write is feature-detected and disabled until a local image is loaded.
+✓ Version/cache references updated to 4.8.1.
+
+Note: real browser permission behavior for showDirectoryPicker must be verified in the browser used for Studio. Direct folder writing is browser-dependent; standard local upload + JSON export does not require it.

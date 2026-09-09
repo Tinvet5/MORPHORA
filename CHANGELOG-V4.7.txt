@@ -1,0 +1,37 @@
+MORPHORA V4.7.0 — Performance, Deep Zoom & Production Hardening
+
+ADDED
+- DZI and normal-image source abstraction in the public atlas.
+- DZI and normal-image source abstraction in Content Studio.
+- Automatic standard-image fallback when a tiled source cannot open.
+- Five canine skull Deep Zoom pyramids.
+- Five optimized WebP view thumbnails.
+- Progressive image-loading messages.
+- Adjacent-view JSON, thumbnail, and descriptor prefetching.
+- Performance diagnostics through ?debug=performance.
+- Central runtime configuration in app-config.js.
+- Same-origin application-shell and runtime service worker caching.
+- Offline connection notice.
+- Python single-image Deep Zoom converter.
+- Python batch image-ingestion tool.
+- Full atlas/data/asset validation tool.
+- GitHub Actions validation workflow.
+- npm validation and JavaScript-check commands.
+- .nojekyll, .gitignore, and .gitattributes production files.
+
+CHANGED
+- Current canine skull view JSON files now use DZI primary sources.
+- Original JPG photographs are retained as fallbacks.
+- OpenSeadragon is loaded with defer.
+- Studio displays the active image-source type beside the path.
+- Cache/runtime version increased to 4.7.0.
+- View template updated for DZI, fallback, thumbnail, labelPosition, category, and status.
+
+COMPATIBILITY
+- Existing normal-image view JSON remains supported.
+- Existing normalized official-label coordinates remain unchanged.
+- Existing personal annotation coordinates remain unchanged.
+- Existing Studio drafts remain compatible.
+
+KNOWN EXPECTED WARNING
+- dog-cervical-c1-dorsal references a photograph that has not yet been added because the collection remains coming soon.

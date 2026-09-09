@@ -1,0 +1,87 @@
+{
+  "schemaVersion": 1,
+  "defaultSpeciesId": "dog",
+  "species": [
+    {
+      "id": "dog",
+      "name": "Dog",
+      "scientificName": "Canis lupus familiaris",
+      "description": "Explore the current canine anatomy collections available in MORPHORA.",
+      "status": "available",
+      "dataPath": "data/species/dog.json",
+      "searchTerms": [
+        "canine",
+        "canis",
+        "dog anatomy",
+        "veterinary osteology"
+      ],
+      "coverImage": "images/thumbnails/species/dog.jpg",
+      "featured": true
+    },
+    {
+      "id": "horse",
+      "name": "Horse",
+      "scientificName": "Equus caballus",
+      "description": "Equine anatomy collections are planned for a future release.",
+      "status": "coming-soon",
+      "searchTerms": [
+        "equine",
+        "equus",
+        "horse anatomy"
+      ],
+      "plannedFocus": [
+        "Skeletal anatomy",
+        "Limb anatomy",
+        "Head and neck"
+      ]
+    },
+    {
+      "id": "cat",
+      "name": "Cat",
+      "scientificName": "Felis catus",
+      "description": "Feline anatomy collections are planned for a future release.",
+      "status": "coming-soon",
+      "searchTerms": [
+        "feline",
+        "felis",
+        "cat anatomy"
+      ],
+      "plannedFocus": [
+        "Skeletal anatomy",
+        "Regional anatomy"
+      ]
+    },
+    {
+      "id": "cattle",
+      "name": "Cattle",
+      "scientificName": "Bos taurus",
+      "description": "Bovine anatomy collections are planned for a future release.",
+      "status": "coming-soon",
+      "searchTerms": [
+        "bovine",
+        "bos",
+        "ruminant anatomy"
+      ],
+      "plannedFocus": [
+        "Skeletal anatomy",
+        "Digestive anatomy"
+      ]
+    },
+    {
+      "id": "rabbit",
+      "name": "Rabbit",
+      "scientificName": "Oryctolagus cuniculus",
+      "description": "Lagomorph anatomy collections are planned for a future release.",
+      "status": "coming-soon",
+      "searchTerms": [
+        "lagomorph",
+        "oryctolagus",
+        "rabbit anatomy"
+      ],
+      "plannedFocus": [
+        "Skeletal anatomy",
+        "Regional anatomy"
+      ]
+    }
+  ]
+}

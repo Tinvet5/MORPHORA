@@ -1,0 +1,28 @@
+MORPHORA V4.8.2 — Drawing & Sketch Layer
+
+Added
+- Persistent per-view vector drawing layer over the public atlas.
+- Pen, highlighter, stroke eraser, and Pan tools.
+- Adjustable color and brush size.
+- Undo/redo history.
+- Show/hide drawing controls.
+- Clear-current-view drawing action with confirmation.
+- Drawing JSON backup export/import (merge or replace).
+- Drawing count badge in atlas controls.
+- Desktop keyboard shortcuts and temporary Space-drag panning.
+- Mouse, stylus, and touch drawing support through OpenSeadragon.
+- Automatic drawing hiding/locking during Quiz sessions.
+- New `drawing.js` module and `window.MorphoraDrawing` API.
+
+Changed
+- Runtime/cache version increased to 4.8.2.
+- Public atlas API now exposes `setDrawingActive()` so drawing and personal-note interactions cannot conflict.
+- Study/Quiz mode coordinates with the drawing layer.
+- Service worker caches the drawing module.
+- JavaScript validation pipeline now checks `drawing.js`.
+
+Preserved
+- V4.8.1 Content Studio image upload and label positioning workflow.
+- V4.8 Study/Quiz engine and progress data.
+- V4.7 Deep Zoom delivery and validation tools.
+- V4.5 persistent notes.

@@ -1,0 +1,35 @@
+{
+  "schemaVersion": 1,
+  "id": "species-collection-view",
+  "title": "Anatomical view title",
+  "orientation": "orientation",
+  "image": {
+    "type": "dzi",
+    "src": "tiles/species-collection-view/species-collection-view.dzi",
+    "fallback": "images/views/species-collection-view.jpg",
+    "thumbnail": "images/thumbnails/views/species-collection-view.webp",
+    "width": 6000,
+    "height": 4000,
+    "alt": "Accessible description of the anatomical photograph"
+  },
+  "labels": [
+    {
+      "id": "structure-id",
+      "name": "Structure name",
+      "description": "Anatomical description.",
+      "position": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "labelPosition": {
+        "x": 0.4,
+        "y": 0.4
+      },
+      "category": "bone-landmark",
+      "status": "published",
+      "quizEligible": true,
+      "difficulty": "intermediate",
+      "acceptedRadius": 0.045
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+# Local source photography should stay outside the public GitHub Pages build.
+source-images/*
+!source-images/README.md
+
+# Python tooling caches
+__pycache__/
+*.py[cod]
+
+# OS/editor files
+.DS_Store
+Thumbs.db
+.vscode/

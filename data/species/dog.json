@@ -1,0 +1,254 @@
+{
+  "schemaVersion": 1,
+  "id": "dog",
+  "name": "Dog",
+  "scientificName": "Canis lupus familiaris",
+  "summary": "Study canine morphology through high-resolution anatomical photographs and interactive labels.",
+  "systems": [
+    {
+      "id": "skeletal",
+      "name": "Skeletal system",
+      "description": "Bones, joints, foramina, sutures and regional osteology.",
+      "status": "available",
+      "collections": [
+        {
+          "id": "skull",
+          "name": "Canine skull",
+          "shortCode": "SK",
+          "description": "Five high-resolution osteology views with interactive anatomical labels.",
+          "status": "available",
+          "manifestPath": "data/collections/dog-skull.json",
+          "route": "#/species/dog/skeletal/skull",
+          "tags": [
+            "Osteology",
+            "Head",
+            "Interactive"
+          ],
+          "searchTerms": [
+            "cranium",
+            "canine skull",
+            "head bones",
+            "foramina",
+            "sutures"
+          ],
+          "thumbnail": "images/thumbnails/collections/dog-skull.jpg",
+          "featured": true
+        },
+        {
+          "id": "cervical-vertebrae",
+          "name": "Cervical vertebrae",
+          "shortCode": "CV",
+          "description": "Atlas, axis and typical cervical vertebrae of the dog.",
+          "status": "coming-soon",
+          "manifestPath": "data/collections/dog-cervical-vertebrae.json",
+          "route": "#/species/dog/skeletal/cervical-vertebrae",
+          "tags": [
+            "Vertebral column",
+            "Cervical",
+            "Osteology"
+          ],
+          "searchTerms": [
+            "cervical spine",
+            "atlas",
+            "axis",
+            "c1",
+            "c2"
+          ],
+          "plannedContent": [
+            "C1 — atlas",
+            "C2 — axis",
+            "Typical cervical vertebrae",
+            "Multiple anatomical orientations"
+          ]
+        },
+        {
+          "id": "thoracic-vertebrae",
+          "name": "Thoracic vertebrae",
+          "shortCode": "TV",
+          "description": "Thoracic vertebral anatomy and costal articulations.",
+          "status": "coming-soon",
+          "route": "#/species/dog/skeletal/thoracic-vertebrae",
+          "tags": [
+            "Vertebral column",
+            "Thoracic",
+            "Osteology"
+          ],
+          "searchTerms": [
+            "thoracic spine",
+            "costal facets",
+            "anticlinal vertebra"
+          ],
+          "plannedContent": [
+            "Cranial thoracic vertebrae",
+            "Anticlinal vertebra",
+            "T13",
+            "Costal articulations"
+          ]
+        },
+        {
+          "id": "lumbar-vertebrae",
+          "name": "Lumbar vertebrae",
+          "shortCode": "LV",
+          "description": "Lumbar vertebral morphology and regional characteristics.",
+          "status": "coming-soon",
+          "route": "#/species/dog/skeletal/lumbar-vertebrae",
+          "tags": [
+            "Vertebral column",
+            "Lumbar",
+            "Osteology"
+          ],
+          "searchTerms": [
+            "lumbar spine",
+            "lumbar vertebrae"
+          ],
+          "plannedContent": [
+            "Representative lumbar vertebrae",
+            "L1",
+            "L7",
+            "Multiple anatomical orientations"
+          ]
+        },
+        {
+          "id": "sacrum",
+          "name": "Sacrum",
+          "shortCode": "SA",
+          "description": "Sacral vertebrae and their fused anatomical structures.",
+          "status": "coming-soon",
+          "route": "#/species/dog/skeletal/sacrum",
+          "tags": [
+            "Vertebral column",
+            "Sacral",
+            "Osteology"
+          ],
+          "searchTerms": [
+            "sacral vertebrae",
+            "sacral bone"
+          ],
+          "plannedContent": [
+            "Dorsal view",
+            "Ventral view",
+            "Lateral view",
+            "Cranial and caudal views"
+          ]
+        },
+        {
+          "id": "caudal-vertebrae",
+          "name": "Caudal vertebrae",
+          "shortCode": "CD",
+          "description": "Regional changes along the canine caudal vertebral series.",
+          "status": "coming-soon",
+          "route": "#/species/dog/skeletal/caudal-vertebrae",
+          "tags": [
+            "Vertebral column",
+            "Caudal",
+            "Osteology"
+          ],
+          "searchTerms": [
+            "tail vertebrae",
+            "coccygeal vertebrae"
+          ],
+          "plannedContent": [
+            "Proximal caudal vertebrae",
+            "Middle caudal vertebrae",
+            "Distal caudal vertebrae"
+          ]
+        },
+        {
+          "id": "thoracic-limb",
+          "name": "Thoracic limb",
+          "shortCode": "TL",
+          "description": "Bones and joints of the canine forelimb.",
+          "status": "coming-soon",
+          "route": "#/species/dog/skeletal/thoracic-limb",
+          "tags": [
+            "Appendicular skeleton",
+            "Forelimb"
+          ],
+          "searchTerms": [
+            "forelimb",
+            "front limb",
+            "thoracic limb"
+          ],
+          "plannedContent": [
+            "Scapula",
+            "Humerus",
+            "Radius and ulna",
+            "Manus"
+          ]
+        },
+        {
+          "id": "pelvic-limb",
+          "name": "Pelvic limb",
+          "shortCode": "PL",
+          "description": "Bones and joints of the canine hindlimb.",
+          "status": "coming-soon",
+          "route": "#/species/dog/skeletal/pelvic-limb",
+          "tags": [
+            "Appendicular skeleton",
+            "Hindlimb"
+          ],
+          "searchTerms": [
+            "hindlimb",
+            "rear limb",
+            "pelvic limb"
+          ],
+          "plannedContent": [
+            "Pelvis",
+            "Femur",
+            "Tibia and fibula",
+            "Pes"
+          ]
+        }
+      ],
+      "searchTerms": [
+        "osteology",
+        "bones",
+        "skeleton",
+        "joints"
+      ],
+      "icon": "S"
+    },
+    {
+      "id": "muscular",
+      "name": "Muscular system",
+      "description": "Regional muscles, attachments and functional groups.",
+      "status": "coming-soon",
+      "collections": [],
+      "searchTerms": [],
+      "icon": "M"
+    },
+    {
+      "id": "nervous",
+      "name": "Nervous system",
+      "description": "Central and peripheral neuroanatomy.",
+      "status": "coming-soon",
+      "collections": [],
+      "searchTerms": [],
+      "icon": "N"
+    },
+    {
+      "id": "cardiovascular",
+      "name": "Cardiovascular system",
+      "description": "Cardiac anatomy and major vascular pathways.",
+      "status": "coming-soon",
+      "collections": [],
+      "searchTerms": [],
+      "icon": "C"
+    },
+    {
+      "id": "digestive",
+      "name": "Digestive system",
+      "description": "Oral cavity, gastrointestinal tract and associated organs.",
+      "status": "coming-soon",
+      "collections": [],
+      "searchTerms": [],
+      "icon": "D"
+    }
+  ],
+  "coverImage": "images/thumbnails/species/dog.jpg",
+  "searchTerms": [
+    "canine anatomy",
+    "dog",
+    "canis lupus familiaris"
+  ]
+}

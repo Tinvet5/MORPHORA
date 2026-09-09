@@ -1,0 +1,12 @@
+{
+  "name": "morphora-atlas",
+  "version": "4.8.2",
+  "private": true,
+  "description": "MORPHORA veterinary anatomy atlas validation commands",
+  "scripts": {
+    "validate": "python tools/validate_atlas.py",
+    "check:js": "node --check app-config.js && node --check performance.js && node --check accessibility.js && node --check script.js && node --check study.js && node --check drawing.js && node --check navigation.js && node --check studio/studio.js && node --check service-worker.js",
+    "check": "npm run check:js && npm run check:static && npm run validate",
+    "check:static": "python tools/check_static.py"
+  }
+}

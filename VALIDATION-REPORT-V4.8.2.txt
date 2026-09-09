@@ -1,0 +1,59 @@
+MORPHORA V4.8.2 — Validation report
+Release: 4.8.2
+
+Automated project check
+-----------------------
+
+> npm run check
+
+JavaScript syntax
+✓ app-config.js
+✓ performance.js
+✓ accessibility.js
+✓ script.js
+✓ study.js
+✓ drawing.js
+✓ navigation.js
+✓ studio/studio.js
+✓ service-worker.js
+
+Static project validation
+✓ HTML references resolved
+✓ JavaScript DOM ids resolved
+✓ Local HTML assets found
+✓ CSS braces balanced
+✓ Service-worker shell assets found
+
+Atlas validation
+✓ Catalog and manifest traversal complete
+✓ Species checked: 1
+✓ Collections checked: 2
+✓ Views checked: 6
+✓ Labels checked: 12
+✓ Deep Zoom views: 5
+✓ Standard images: 1
+
+V4.8.2-specific implementation checks
+-------------------------------------
+✓ New drawing.js module is loaded by index.html and cached by service-worker.js.
+✓ Drawing controls referenced by drawing.js exist in index.html.
+✓ Drawing mode is coordinated through the public MorphoraAtlas API.
+✓ Study mode exits active drawing cleanly.
+✓ Quiz sessions invoke drawing hide/lock and restore hooks.
+✓ Persistent drawing storage is separated from personal annotation and learning-progress storage.
+✓ Runtime/cache version increased to 4.8.2.
+✓ Package JavaScript validation includes drawing.js.
+
+Known expected warning
+----------------------
+! View dog-cervical-c1-dorsal.image.src is intentionally absent:
+  images/dog/vertebral-column/cervical/dog-cervical-c1-dorsal.jpg
+
+Final automated result
+----------------------
+0 errors
+1 expected warning
+
+Browser note
+------------
+A full real-device OpenSeadragon drawing interaction test could not be completed in the build environment because headless Chromium did not initialize reliably with the externally hosted OpenSeadragon dependency. Use DRAWING-TEST-CHECKLIST.md for the final desktop, tablet, stylus, and mobile verification after local or GitHub Pages deployment.

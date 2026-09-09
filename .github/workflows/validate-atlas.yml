@@ -1,0 +1,39 @@
+name: Validate MORPHORA atlas
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Validate static project references
+        run: python tools/check_static.py
+
+      - name: Validate atlas data and assets
+        run: python tools/validate_atlas.py
+
+      - name: Check JavaScript syntax
+        run: |
+          node --check app-config.js
+          node --check performance.js
+          node --check accessibility.js
+          node --check script.js
+          node --check study.js
+          node --check navigation.js
+          node --check studio/studio.js
+          node --check service-worker.js
