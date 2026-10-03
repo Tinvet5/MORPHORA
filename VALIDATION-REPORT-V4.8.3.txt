@@ -1,0 +1,38 @@
+MORPHORA V4.8.3 — Validation report
+Release: 4.8.3
+
+Automated project checks
+✓ JavaScript syntax: app-config, performance, accessibility, atlas, study, drawing, navigation, Studio storage, Studio and service worker.
+✓ HTML references resolved.
+✓ JavaScript DOM IDs resolved.
+✓ Local HTML assets found.
+✓ CSS braces balanced.
+✓ Service-worker shell assets found.
+✓ Atlas catalog and manifest traversal passed.
+✓ 6 atlas views checked.
+✓ 12 labels checked.
+✓ 5 Deep Zoom views checked.
+✓ 1 standard image view checked.
+✓ Studio HTML contains no duplicate element IDs.
+
+V4.8.3-specific static checks
+✓ Batch image controls are present and connected to Studio JavaScript.
+✓ View metadata controls are present and connected to Studio JavaScript.
+✓ Project-folder verification checks index.html, studio.html and data/catalog.json.
+✓ Publish preflight and new-view collision checks are present.
+✓ Unpublished local batch entries are filtered from the manifest write plan.
+✓ IndexedDB image persistence module is loaded by Studio and cached by the service worker.
+✓ .morphora-backups is excluded by .gitignore.
+✓ Built-in OpenSeadragon navigation controls are disabled in both viewer initializers.
+
+Atlas validator result
+0 errors
+1 expected warning
+
+Expected warning
+- dog-cervical-c1-dorsal references the intentionally missing coming-soon cervical photograph.
+
+Browser-dependent checks still required
+- File System Access permission and folder writing in the actual Chrome/Edge browser used for Studio.
+- IndexedDB photograph recovery after a real browser restart.
+- Mouse/touch/stylus regressions in OpenSeadragon.

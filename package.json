@@ -1,0 +1,28 @@
+{
+  "name": "morphora-atlas",
+  "version": "4.9.8",
+  "private": true,
+  "description": "MORPHORA veterinary anatomy atlas V4.9.8 release candidate: production audit, accessibility, localization, and runtime resilience hardening",
+  "scripts": {
+    "validate": "npm run validate:project",
+    "validate:project": "python tools/validate_project.py",
+    "validate:atlas": "python tools/validate_atlas.py",
+    "check:js": "node --check release-meta.js && node --check app-config.js && node --check models.js && node --check storage.js && node --check i18n/language-manager.js && node --check validation/rules.js && node --check performance.js && node --check accessibility.js && node --check script.js && node --check study.js && node --check drawing.js && node --check navigation.js && node --check dev-tools.js && node --check performance-lab.js && node --check studio/storage.js && node --check studio/studio.js && node --check service-worker.js",
+    "check:models": "node tools/test_models.js",
+    "check:validation": "node tools/test_validation.js",
+    "check:static": "python tools/check_static.py",
+    "schema:check": "python tools/migrate_schema.py --check",
+    "schema:migrate": "python tools/migrate_schema.py --write",
+    "check": "npm run check:js && npm run check:python && npm run check:models && npm run check:storage && npm run check:i18n && npm run check:study && npm run check:validation && npm run check:static && npm run check:release-candidate && npm run schema:check && npm run validate:project && npm run performance:audit",
+    "build:release": "python tools/build_release.py",
+    "check:release": "python tools/check_release.py",
+    "release:verify": "npm run check:release-candidate && npm run build:release && npm run check:release",
+    "ci": "npm run check && npm run release:verify",
+    "check:python": "python -m py_compile tools/build_release.py tools/check_release.py tools/validate_project.py tools/validation_core.py tools/audit_performance.py tools/release_candidate_audit.py",
+    "performance:audit": "python tools/audit_performance.py",
+    "check:storage": "node tools/test_storage.js",
+    "check:study": "node tools/test_study_engine.js",
+    "check:i18n": "node tools/test_i18n.js",
+    "check:release-candidate": "python tools/release_candidate_audit.py"
+  }
+}

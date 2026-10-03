@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="theme-color" content="#001030">
+  <title>MORPHORA V4.9 Performance Lab</title>
+  <link rel="icon" type="image/svg+xml" href="assets/branding/morphora-icon-primary.svg?v=4.9.8">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="performance-lab.css?v=4.9.8">
+  <script src="release-meta.js?v=4.9.8"></script>
+  <script src="app-config.js?v=4.9.8"></script>
+  <script src="storage.js?v=4.9.8"></script>
+<script src="i18n/language-manager.js?v=4.9.8"></script>
+  <script src="performance.js?v=4.9.8"></script>
+</head>
+<body>
+  <header class="lab-header">
+    <a class="brand" href="dev-tools.html" aria-label="Return to MORPHORA Developer Diagnostics">
+      <img src="assets/branding/morphora-icon-white.svg" alt="">
+      <span><strong>MORPHORA</strong><small>Performance Lab</small></span>
+    </a>
+    <div class="header-actions">
+      <span class="version-pill">V4.9</span>
+      <button id="refreshMetrics" type="button">Refresh metrics</button>
+      <button id="exportMetrics" type="button">Export report</button>
+      <a href="index.html?debug=performance#/species">Open atlas</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero-panel">
+      <div>
+        <p class="eyebrow">Real-device profiling</p>
+        <h1>Measure the atlas where students will actually use it.</h1>
+        <p>This page reads only local browser performance data. Nothing is uploaded or shared automatically.</p>
+      </div>
+      <div class="profile-card">
+        <span>Active device profile</span>
+        <strong id="profileName">Detecting…</strong>
+        <small id="profileReason">Reading device and network hints.</small>
+      </div>
+    </section>
+
+    <section class="summary-grid" aria-label="Performance summary">
+      <article><span>Network</span><strong id="networkType">—</strong><small id="networkDetail">—</small></article>
+      <article><span>Hardware</span><strong id="hardwareSummary">—</strong><small id="hardwareDetail">—</small></article>
+      <article><span>LCP</span><strong id="lcpValue">—</strong><small id="lcpStatus">Largest contentful paint</small></article>
+      <article><span>CLS</span><strong id="clsValue">—</strong><small id="clsStatus">Layout stability</small></article>
+      <article><span>Long tasks</span><strong id="longTaskCount">—</strong><small id="longTaskDetail">Main-thread stalls</small></article>
+      <article><span>Storage</span><strong id="storageUsage">—</strong><small id="storageDetail">Browser quota</small></article>
+    </section>
+
+    <section class="lab-grid">
+      <article class="panel">
+        <div class="panel-heading">
+          <div><p class="eyebrow">Atlas timings</p><h2>Recent anatomical views</h2></div>
+          <span class="badge" id="viewHealthBadge">No data</span>
+        </div>
+        <p class="muted">Open several atlas views first, then return here. Each row records data load, viewer open, and first visible tile timing.</p>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>View</th><th>Data</th><th>Viewer</th><th>First tile</th><th>Total</th><th>Result</th></tr></thead>
+            <tbody id="viewMetricsBody"><tr><td colspan="6" class="empty-cell">No view measurements recorded yet.</td></tr></tbody>
+          </table>
+        </div>
+      </article>
+
+      <aside class="panel side-panel">
+        <div class="panel-heading"><div><p class="eyebrow">Viewer policy</p><h2>Adaptive OpenSeadragon profile</h2></div></div>
+        <dl class="metric-list">
+          <div><dt>Immediate render</dt><dd id="viewerImmediate">—</dd></div>
+          <div><dt>Concurrent image loads</dt><dd id="viewerLoaderLimit">—</dd></div>
+          <div><dt>Tile cache cap</dt><dd id="viewerCacheCount">—</dd></div>
+          <div><dt>Minimum pixel ratio</dt><dd id="viewerPixelRatio">—</dd></div>
+        </dl>
+        <p class="muted small">MORPHORA selects this profile locally from browser connection, memory, processor and input hints.</p>
+      </aside>
+    </section>
+
+    <section class="lab-grid lower-grid">
+      <article class="panel">
+        <div class="panel-heading"><div><p class="eyebrow">Network workload</p><h2>Current page resources</h2></div></div>
+        <div class="resource-grid">
+          <div><span>Requests</span><strong id="requestCount">—</strong></div>
+          <div><span>Transferred</span><strong id="transferBytes">—</strong></div>
+          <div><span>DZI tiles</span><strong id="tileRequestCount">—</strong></div>
+          <div><span>JSON</span><strong id="jsonRequestCount">—</strong></div>
+        </div>
+        <div class="cache-list" id="cacheList"><div class="empty-state">Cache data unavailable.</div></div>
+      </article>
+
+      <article class="panel">
+        <div class="panel-heading"><div><p class="eyebrow">Targets</p><h2>V4.9 performance budgets</h2></div></div>
+        <div class="target-list" id="targetList"></div>
+        <p class="muted small">These are development targets, not promises. Real results depend on hardware, browser state and connection quality.</p>
+      </article>
+    </section>
+
+    <section class="panel history-panel">
+      <div class="panel-heading">
+        <div><p class="eyebrow">Local history</p><h2>Stored sessions</h2></div>
+        <button id="clearHistory" class="danger-button" type="button">Clear history</button>
+      </div>
+      <div class="history-list" id="historyList"><div class="empty-state">No stored sessions yet.</div></div>
+    </section>
+  </main>
+
+  <script src="performance-lab.js?v=4.9.8"></script>
+</body>
+</html>

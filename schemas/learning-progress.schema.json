@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "MORPHORA Learning Progress Store v2",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "structures",
+    "sessions"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": 2
+    },
+    "updatedAt": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "structures": {
+      "type": "object"
+    },
+    "sessions": {
+      "type": "array"
+    }
+  },
+  "additionalProperties": true
+}

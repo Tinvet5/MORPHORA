@@ -1,0 +1,58 @@
+MORPHORA V4.7 VALIDATION REPORT
+===============================
+Release: 4.7.0
+Package: MORPHORA-V4.7-Performance-Deep-Zoom
+
+AUTOMATED CHECKS
+----------------
+PASS  JavaScript syntax checks
+      - app-config.js
+      - performance.js
+      - accessibility.js
+      - script.js
+      - navigation.js
+      - studio/studio.js
+      - service-worker.js
+
+PASS  Static project checks
+      - local HTML asset references
+      - ARIA control targets
+      - JavaScript DOM ID references
+      - CSS brace balance
+      - service-worker application-shell paths
+
+PASS  Atlas data validation
+      - catalog, species, collection, and view JSON
+      - published view paths and default-view references
+      - standard-image and DZI source schemas
+      - DZI descriptors and expected tile files
+      - fallbacks and view thumbnails
+      - unique label IDs
+      - normalized anchor and label coordinates
+
+RESULT
+------
+0 errors
+1 expected warning:
+- dog-cervical-c1-dorsal has no photograph yet; its collection is marked coming soon.
+
+DEEP ZOOM CHECKS
+----------------
+PASS  Five canine skull DZI pyramids generated
+PASS  521 tiles verified per view (2,605 image tiles total)
+PASS  Maximum-level reconstruction matched 6000 x 4000 source dimensions
+PASS  Local HTTP descriptor and tile paths resolved
+PASS  Single-image conversion tool tested with a synthetic source
+PASS  Batch conversion tool tested with two synthetic sources
+
+PYTHON TOOLING
+--------------
+PASS  tools/*.py compiled successfully
+
+TESTING LIMITATION
+------------------
+A full real-browser OpenSeadragon interaction test could not be completed in the build environment because the available headless Chromium process did not initialize reliably, including on a minimal page. The project therefore still requires final live testing in Chrome/Edge/Firefox/Safari and on at least one touch device after deployment.
+
+OFFLINE LIMITATION
+------------------
+The service worker caches same-origin application and atlas resources on demand. OpenSeadragon remains hosted on the cdnjs CDN, so this release is offline-resilient rather than a guaranteed fully offline installation.

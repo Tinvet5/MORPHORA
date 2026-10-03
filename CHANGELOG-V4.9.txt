@@ -1,0 +1,32 @@
+MORPHORA V4.9 — Real-World Performance Audit & Optimization
+
+Added
+- New Performance Lab (`performance-lab.html`).
+- Per-view timing from request through first visible tile.
+- Local performance history and JSON export.
+- LCP, CLS, long-task, resource, storage and cache diagnostics where browser APIs support them.
+- Adaptive OpenSeadragon profiles for constrained, balanced and high-capacity devices.
+- Static asset-budget audit (`npm run performance:audit`).
+- Static performance reports under `reports/`.
+
+Optimized
+- Bounded LRU-style view-data cache.
+- Bounded collection/species navigation caches.
+- Dedicated capped service-worker Deep Zoom tile cache.
+- Cache-first DZI tile reuse within a release.
+- Conservative prefetch behavior on constrained/data-saving connections.
+- Optional OpenSeadragon tile-cache trimming on constrained devices.
+- Touch devices enable immediate rendering through the runtime viewer profile.
+
+Preserved
+- V4.8.6 validation-gated GitHub Pages deployment.
+- Content Studio and publishing workflow.
+- Schema V2 compatibility and migration.
+- Study / Quiz engine.
+- Persistent notes and drawings.
+- Existing Deep Zoom assets and label coordinates.
+
+Version
+- Application: 4.9.2
+- Schema: 2
+- User-data schema: 2

@@ -1,0 +1,33 @@
+MORPHORA V4.9.7 — Content Discovery & Multilingual Foundation
+
+ADDED
+- Central i18n language manager with Spanish and English runtime support.
+- Persisted user language preference with browser-locale first-visit detection.
+- Live language switching without atlas reload.
+- ES/EN public-interface dictionaries.
+- Additive localized content fields for catalog/species/system/collection/view/label/question data.
+- Localized anatomical aliases and optional Latin terminology support.
+- Global Content Discovery indexing anatomical structures across published/available views.
+- Direct navigation from a global structure search result to its view/hotspot.
+- Translation-aware Study/Quiz rendering.
+- Multilingual authored-question support.
+- Studio ES/EN content-language editor, aliases and translation-completion status.
+- `npm run check:i18n` automated bilingual integrity test.
+
+CHANGED
+- Dog Skull is now the bilingual reference collection: 5 published views, 12 bilingual labels.
+- Schemas accept optional translation/terminology fields while retaining canonical V2 compatibility.
+- Release builder/service worker/static checker include the new `i18n/` runtime assets.
+- Runtime/package/release metadata updated to V4.9.7.
+
+COMPATIBILITY
+- Stable anatomical IDs and all coordinates are unchanged.
+- Legacy name/description fields are preserved.
+- Notes, drawings, learning progress, quiz recovery and Studio drafts require no migration.
+- Deep Zoom assets are unchanged.
+
+VALIDATION
+- 0 errors.
+- 1 expected warning: missing dog-cervical-c1-dorsal starter photograph.
+- 2,605 Deep Zoom tiles / 6.97 MiB.
+- 0 performance warnings.

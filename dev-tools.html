@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="theme-color" content="#001030">
+  <title>MORPHORA V4.9.8 Developer Diagnostics</title>
+  <link rel="icon" type="image/svg+xml" href="assets/branding/morphora-icon-primary.svg?v=4.9.8">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="dev-tools.css?v=4.9.8">
+  <script src="release-meta.js?v=4.9.8"></script>
+<script src="app-config.js?v=4.9.8"></script>
+  <script src="models.js?v=4.9.8"></script>
+  <script src="storage.js?v=4.9.8"></script>
+<script src="i18n/language-manager.js?v=4.9.8"></script>
+  <script src="validation/rules.js?v=4.9.8"></script>
+</head>
+<body>
+  <header class="diagnostics-header">
+    <a class="brand" href="studio.html" aria-label="Return to MORPHORA Studio">
+      <img src="assets/branding/morphora-icon-white.svg" alt="">
+      <span><strong>MORPHORA</strong><small>Developer diagnostics</small></span>
+    </a>
+    <div class="header-actions">
+      <span class="version-pill" id="versionPill">V4.9.8</span>
+      <button id="rerunButton" type="button">Run diagnostics</button>
+      <a href="performance-lab.html">Performance Lab</a>
+      <a href="studio.html">Back to Studio</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero-panel">
+      <div>
+        <p class="eyebrow">Project health</p>
+        <h1>Validation at a glance.</h1>
+        <p>Checks the live project graph, content schemas, references and published-view readiness without changing any files.</p>
+      </div>
+      <div class="overall-status" id="overallStatus" data-level="pending">
+        <span class="status-dot"></span>
+        <div><strong>Not checked</strong><small>Run diagnostics to inspect the current build.</small></div>
+      </div>
+    </section>
+
+    <section class="summary-grid" aria-label="Project validation summary">
+      <article><span>Species</span><strong id="speciesCount">—</strong></article>
+      <article><span>Collections</span><strong id="collectionCount">—</strong></article>
+      <article><span>Views</span><strong id="viewCount">—</strong></article>
+      <article><span>Labels</span><strong id="labelCount">—</strong></article>
+      <article class="summary-errors"><span>Errors</span><strong id="errorCount">—</strong></article>
+      <article class="summary-warnings"><span>Warnings</span><strong id="warningCount">—</strong></article>
+    </section>
+
+    <section class="diagnostics-grid">
+      <article class="panel">
+        <div class="panel-heading"><div><p class="eyebrow">Runtime scan</p><h2>Project checks</h2></div><span class="badge" id="runtimeBadge">Pending</span></div>
+        <div class="progress-track"><div class="progress-bar" id="progressBar"></div></div>
+        <p class="muted" id="progressText">Waiting to start.</p>
+        <div class="issue-list" id="issueList"><div class="empty-state">No diagnostics have run yet.</div></div>
+      </article>
+
+      <aside class="panel side-panel">
+        <div class="panel-heading"><div><p class="eyebrow">Repository report</p><h2>CLI validation</h2></div></div>
+        <p class="muted">After running <code>npm run check</code>, this page can read the local machine-generated report.</p>
+        <div id="cliReport" class="cli-report"><div class="empty-state">No local report loaded.</div></div>
+        <div class="release-status-card" aria-labelledby="releaseStatusTitle">
+          <div class="release-status-heading">
+            <div><span>Deployment</span><strong id="releaseStatusTitle">Release identity</strong></div>
+            <span class="badge" id="releaseBadge">Loading</span>
+          </div>
+          <div class="release-row"><span>Runtime</span><strong id="runtimeReleaseVersion">—</strong><code id="runtimeReleaseCommit">—</code></div>
+          <div class="release-row"><span>Artifact</span><strong id="artifactReleaseVersion">—</strong><code id="artifactReleaseCommit">—</code></div>
+          <p class="muted small" id="releaseBuiltAt">Reading release metadata…</p>
+          <a class="release-link" id="releaseBuildLink" href="#" target="_blank" rel="noopener noreferrer" hidden>Open GitHub Actions build</a>
+        </div>
+        <div class="storage-status-card" aria-labelledby="storageStatusTitle">
+          <div class="release-status-heading">
+            <div><span>Persistence</span><strong id="storageStatusTitle">Storage health</strong></div>
+            <span class="badge" id="storageBadge">Loading</span>
+          </div>
+          <div class="storage-row"><span>Local store</span><strong id="storageBackendStatus">—</strong></div>
+          <div class="storage-row"><span>Browser quota</span><strong id="storageQuotaStatus">—</strong></div>
+          <div class="storage-row"><span>Persistent permission</span><strong id="storagePersistenceStatus">—</strong></div>
+          <div class="storage-row"><span>Recovery snapshots</span><strong id="storageRecoveryCount">—</strong></div>
+          <div class="storage-actions">
+            <button id="requestPersistenceButton" type="button">Request persistence</button>
+            <button id="exportPersonalBackupButton" type="button">Export personal backup</button>
+            <button id="importPersonalBackupButton" type="button">Import personal backup</button>
+            <input id="personalBackupImportInput" type="file" accept="application/json,.json" hidden>
+          </div>
+          <p class="muted small">The backup includes notes, drawings, learning progress, theme and recent-view preferences. Studio draft images remain separate.</p>
+        </div>
+        <div class="command-card">
+          <span>Recommended command</span>
+          <code>npm run check</code>
+        </div>
+        <div class="command-card">
+          <span>Validation only</span>
+          <code>npm run validate:project</code>
+        </div>
+        <div class="command-card">
+          <span>Static performance audit</span>
+          <code>npm run performance:audit</code>
+        </div>
+        <a class="release-link" href="performance-lab.html">Open real-device Performance Lab</a>
+        <p class="muted small">The browser scan cannot inspect every Deep Zoom tile or local Git metadata. The CLI validator remains authoritative before publishing.</p>
+      </aside>
+    </section>
+  </main>
+
+  <script src="dev-tools.js?v=4.9.8"></script>
+</body>
+</html>

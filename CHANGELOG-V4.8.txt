@@ -1,0 +1,27 @@
+MORPHORA V4.8.1 — Study Mode & Quiz Engine
+
+ADDED
+- Explore, Study and Quiz atlas modes.
+- Study workspace with hidden-label recall, reveal controls and structure navigation.
+- Locate-the-structure quiz using normalized anatomical anchor coordinates.
+- Multiple-choice highlighted-structure questions.
+- Flashcard sessions with Again, Difficult, Good and Easy recall ratings.
+- Quiz setup, live progress/timer, immediate feedback and results screen.
+- Repeat-missed and review-mistakes workflows.
+- Persistent local learning progress under morphora:learning-progress:v1.
+- Learning Progress drawer with per-structure mastery and recent sessions.
+- Progress JSON export, import/merge and clear controls.
+- Study button in the mobile atlas toolbar.
+- Content Studio fields for quiz eligibility, difficulty and Locate tolerance.
+- Optional label schema fields: quizEligible, difficulty and acceptedRadius.
+- study.js added to the service-worker shell, npm checks and GitHub Actions.
+
+CHANGED
+- Public label validation now normalizes Study/Quiz metadata.
+- Five canine skull view files now include quiz-authoring metadata.
+- Atlas public API now exposes safe learning integration helpers.
+- Cache/runtime version increased to 4.8.1.
+
+COMPATIBILITY
+- Existing V4.7 views without quiz metadata remain valid and quiz eligible by default.
+- Deep Zoom, fallback images, labels, personal notes, navigation and Content Studio remain compatible.

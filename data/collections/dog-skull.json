@@ -1,0 +1,89 @@
+{
+  "schemaVersion": 2,
+  "id": "dog-skull",
+  "title": "Canine Skull Atlas",
+  "speciesId": "dog",
+  "systemId": "skeletal",
+  "collectionId": "skull",
+  "defaultViewId": "dog-skull-lateral",
+  "views": [
+    {
+      "id": "dog-skull-lateral",
+      "buttonLabel": "Lateral",
+      "dataPath": "data/views/dog-skull-lateral.json",
+      "thumbnail": "images/thumbnails/views/dog-skull-lateral.webp",
+      "translations": {
+        "es": {
+          "buttonLabel": "Lateral"
+        },
+        "en": {
+          "buttonLabel": "Lateral"
+        }
+      }
+    },
+    {
+      "id": "dog-skull-ventral",
+      "buttonLabel": "Ventral",
+      "dataPath": "data/views/dog-skull-ventral.json",
+      "thumbnail": "images/thumbnails/views/dog-skull-ventral.webp",
+      "translations": {
+        "es": {
+          "buttonLabel": "Ventral"
+        },
+        "en": {
+          "buttonLabel": "Ventral"
+        }
+      }
+    },
+    {
+      "id": "dog-skull-dorsal",
+      "buttonLabel": "Dorsal",
+      "dataPath": "data/views/dog-skull-dorsal.json",
+      "thumbnail": "images/thumbnails/views/dog-skull-dorsal.webp",
+      "translations": {
+        "es": {
+          "buttonLabel": "Dorsal"
+        },
+        "en": {
+          "buttonLabel": "Dorsal"
+        }
+      }
+    },
+    {
+      "id": "dog-skull-cranial",
+      "buttonLabel": "Frontal",
+      "dataPath": "data/views/dog-skull-cranial.json",
+      "thumbnail": "images/thumbnails/views/dog-skull-cranial.webp",
+      "translations": {
+        "es": {
+          "buttonLabel": "Frontal"
+        },
+        "en": {
+          "buttonLabel": "Frontal"
+        }
+      }
+    },
+    {
+      "id": "dog-skull-caudal",
+      "buttonLabel": "Caudal",
+      "dataPath": "data/views/dog-skull-caudal.json",
+      "thumbnail": "images/thumbnails/views/dog-skull-caudal.webp",
+      "translations": {
+        "es": {
+          "buttonLabel": "Caudal"
+        },
+        "en": {
+          "buttonLabel": "Caudal"
+        }
+      }
+    }
+  ],
+  "translations": {
+    "es": {
+      "title": "Atlas del cráneo canino"
+    },
+    "en": {
+      "title": "Canine Skull Atlas"
+    }
+  }
+}

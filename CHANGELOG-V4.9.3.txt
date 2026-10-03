@@ -1,0 +1,31 @@
+MORPHORA V4.9.3 — Navigation & Search Refinement
+2026-10-01
+
+ADDED
+- Live current-view anatomical label autocomplete.
+- Keyboard navigation for label suggestions.
+- One-click suggestion focus: filter, pan, zoom, and structure inspector.
+- All systems filter control on species hub.
+- Desktop Atlas tools contextual launcher.
+
+CHANGED
+- Species hero reduced to a more compact profile layout.
+- Anatomical-system cards converted to compact filters.
+- Available collections given stronger visual priority.
+- Coming-soon collections converted to compact roadmap cards.
+- Permanent V4.9.2 desktop atlas dock replaced with an on-demand tools popover.
+- OpenSeadragon navigator no longer reserves space for a permanent left dock.
+- Search placeholder changed to “Search structures…”.
+- Runtime/cache version updated to 4.9.3.
+
+PRESERVED
+- V4.9 performance engine and Performance Lab.
+- Deep Zoom and fallback-image pipeline.
+- V4.8.x Content Studio and publishing workflow.
+- Study and Quiz modes.
+- Personal notes and drawings.
+- V2 schema architecture and migration layer.
+- Automated validation and deployment gate.
+
+PACKAGING
+- ZIP once again contains one top-level MORPHORA release folder.

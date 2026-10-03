@@ -1,0 +1,61 @@
+{
+  "schemaVersion": 2,
+  "id": "dog-skull-dorsal",
+  "title": "Canine skull — dorsal view",
+  "orientation": "dorsal",
+  "image": {
+    "type": "dzi",
+    "src": "tiles/dog-skull-dorsal/dog-skull-dorsal.dzi",
+    "fallback": "images/dorsal.jpg",
+    "thumbnail": "images/thumbnails/views/dog-skull-dorsal.webp",
+    "width": 6000,
+    "height": 4000,
+    "alt": "Dorsal view of a canine skull"
+  },
+  "labels": [
+    {
+      "id": "frontal-bone-dorsal",
+      "name": "Hueso Frontal",
+      "description": "El hueso frontal...",
+      "position": {
+        "x": 0.35,
+        "y": 0.45
+      },
+      "category": "bone",
+      "status": "published",
+      "quiz": {
+        "eligible": true,
+        "difficulty": "beginner",
+        "acceptedRadius": 0.065
+      },
+      "translations": {
+        "es": {
+          "name": "Hueso Frontal",
+          "description": "El hueso frontal...",
+          "aliases": [
+            "Hueso Frontal"
+          ]
+        },
+        "en": {
+          "name": "Frontal bone",
+          "description": "The frontal bone...",
+          "aliases": [
+            "frontal bone"
+          ]
+        }
+      },
+      "terminology": {
+        "latin": "Os frontale"
+      }
+    }
+  ],
+  "status": "published",
+  "translations": {
+    "es": {
+      "title": "Cráneo canino — vista dorsal"
+    },
+    "en": {
+      "title": "Canine skull — dorsal view"
+    }
+  }
+}

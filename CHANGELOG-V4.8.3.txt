@@ -1,0 +1,27 @@
+MORPHORA V4.8.3 — Studio & Content Pipeline Hardening
+
+ADDED
+- Multi-image batch ingestion in Content Studio.
+- View metadata editor for title, button label, orientation, image source and alt text.
+- IndexedDB-backed recovery for locally uploaded Studio photographs.
+- Local collection-draft recovery for unpublished new views.
+- Autosave timestamp and richer version-2 Studio draft envelope.
+- Verified local project-folder connection.
+- Publish preflight with path, ID, image, manifest and collision checks.
+- Safe local backups under .morphora-backups before direct file replacement.
+- studio/storage.js persistence module.
+
+CHANGED
+- Direct project-folder action renamed to Publish current view.
+- A connected project folder can publish edits to existing views even when no new photograph is staged.
+- New batch entries are excluded from the on-disk collection manifest until each one is individually published.
+- Collection manifest metadata changes are kept with Studio drafts.
+- Autosave delay reduced and page visibility/pagehide now flush drafts.
+- OpenSeadragon built-in navigation controls disabled in the atlas and Studio.
+- Service-worker shell includes studio/storage.js.
+- Runtime/cache version increased to 4.8.3.
+
+SAFETY
+- Project-folder selection must contain index.html, studio.html and data/catalog.json.
+- New local views are blocked from direct publishing if their target JSON/image paths already exist.
+- .morphora-backups is gitignored.

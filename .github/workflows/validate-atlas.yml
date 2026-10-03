@@ -1,0 +1,65 @@
+name: Validate MORPHORA project
+
+on:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: morphora-validation-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validate:
+    name: Project validation and preview build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Install validator dependencies
+        run: python -m pip install -r tools/requirements.txt
+
+      - name: Run complete MORPHORA check
+        run: npm run check
+
+      - name: Build release preview
+        env:
+          MORPHORA_COMMIT: ${{ github.event.pull_request.head.sha || github.sha }}
+          MORPHORA_SHORT_COMMIT: ${{ github.event.pull_request.head.sha || github.sha }}
+          MORPHORA_REF: ${{ github.head_ref || github.ref_name }}
+          MORPHORA_RUN_ID: ${{ github.run_id }}
+          MORPHORA_REPOSITORY: ${{ github.repository }}
+          MORPHORA_BUILD_URL: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}
+          MORPHORA_DEPLOYMENT_TARGET: preview-artifact
+        run: npm run release:verify
+
+      - name: Upload validation report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: morphora-validation-report
+          path: reports/validation-report.*
+          if-no-files-found: ignore
+
+      - name: Upload preview site
+        if: success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: morphora-preview-site
+          path: dist
+          if-no-files-found: error
+          retention-days: 14

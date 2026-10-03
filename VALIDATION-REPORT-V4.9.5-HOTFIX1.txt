@@ -1,0 +1,34 @@
+MORPHORA V4.9.5 — Loading-State Hotfix 1
+Validation summary
+
+Hotfix scope
+- Public atlas loading overlay made fully opaque.
+- Viewer loading state retained past OpenSeadragon `open` until first active tile load.
+- Two requestAnimationFrame paint handoff added before revealing the viewer.
+- Stale tile-loaded events guarded by current tiled-image identity when available.
+- Content Studio image-loading lifecycle receives the same fix.
+- Local asset URLs cache-busted with 4.9.5-hotfix1.
+
+Automated validation
+- JavaScript syntax: PASS
+- Python tooling compilation: PASS
+- Model migration tests: PASS
+- Storage abstraction tests: PASS
+- Validation rule tests: PASS
+- Static HTML/DOM/CSS checks: PASS
+- Schema migration check: PASS
+- Project validation: PASS (0 errors, 1 expected warning)
+- Static performance audit: PASS (0 errors, 0 warnings)
+- Release build: PASS
+- Release artifact validation: PASS
+
+Atlas validation result
+- 0 errors
+- 1 expected warning: missing starter image for dog-cervical-c1-dorsal
+
+Deep Zoom
+- 2,605 tiles
+- 6.97 MiB
+- 0 performance warnings
+
+No content, schema, user-data, Deep Zoom tile, or Studio-data migration is required.

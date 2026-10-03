@@ -1,0 +1,39 @@
+MORPHORA V4.9.5 — Storage Abstraction & Persistence Hardening
+
+ADDED
+- Shared storage.js persistence abstraction.
+- Central key registry for personal data, preferences, recent state and Studio drafts.
+- In-memory session fallback when persistent storage writes fail.
+- Bounded corrupt-data recovery snapshots.
+- Browser storage health diagnostics in dev-tools.html.
+- Browser quota and persistent-storage permission reporting.
+- Request-persistent-storage control.
+- Unified personal-data export/import bundle.
+- Automatic pre-import recovery snapshot for unified restores.
+- tools/test_storage.js and npm run check:storage.
+- Storage/persistence documentation and test checklist.
+
+CHANGED
+- Notes now use the shared storage layer.
+- Drawings now use the shared storage layer.
+- Learning progress now uses the shared storage layer.
+- Theme, last atlas route and session UI state now use the shared storage layer.
+- Studio JSON drafts, local collection drafts and last context now use the shared storage layer.
+- Performance history now uses the shared storage layer.
+- Studio reports session-only draft fallback explicitly under quota/storage failure.
+- Notes/drawings/progress imports recognize matching data inside unified personal-data bundles.
+- Service worker and release builder include storage.js.
+- Static performance audit now counts storage.js in the core shell.
+
+COMPATIBILITY
+- No atlas schema migration required.
+- Existing V1/V2 user-data keys remain readable.
+- Existing legacy keys are preserved after migration.
+- Existing feature-specific backup formats remain supported.
+- Studio IndexedDB image storage remains separate for binary files.
+
+VALIDATION
+- Storage abstraction tests passed.
+- Full project validation: 0 errors, 1 expected warning.
+- Release artifact validation passed.
+- Deep Zoom: 2,605 tiles / 6.97 MiB / 0 performance warnings.

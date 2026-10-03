@@ -1,0 +1,25 @@
+MORPHORA V4.9.6 — Study & Quiz Engine Refinement
+
+ADDED
+- Difficulty/category filters in Study mode.
+- Difficulty/category/progress filters in quiz setup.
+- Weak and unseen structure pools.
+- Context-aware multiple-choice distractor ranking.
+- Persistent active quiz recovery with Resume/Discard controls.
+- Weighted recent-performance mastery and correct-answer streaks.
+- Collection-level authored knowledge-question banks.
+- Knowledge-question progress records and result support.
+- Results recommendations based on session performance.
+- Question-bank JSON Schema and validation.
+- npm run check:study.
+
+CHANGED
+- Multiple-choice distractors now prioritize comparable anatomical structures.
+- Study navigation uses the active filtered pool.
+- Overall answer totals include authored knowledge questions.
+- Quiz result wording uses “Items reviewed”.
+
+COMPATIBILITY
+- No view/label schema migration required.
+- Existing V4.9.5 learning progress remains compatible.
+- Existing Locate / Choice / Flashcard content remains valid.

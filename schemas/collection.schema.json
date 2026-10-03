@@ -1,0 +1,110 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://morphora.cl/schemas/collection.schema.json",
+  "title": "MORPHORA Collection Schema v2",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "id",
+    "title",
+    "speciesId",
+    "systemId",
+    "collectionId",
+    "defaultViewId",
+    "views"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": 2
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1
+    },
+    "speciesId": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+    },
+    "systemId": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+    },
+    "collectionId": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+    },
+    "defaultViewId": {
+      "type": "string"
+    },
+    "views": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "buttonLabel",
+          "dataPath"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+          },
+          "buttonLabel": {
+            "type": "string",
+            "minLength": 1
+          },
+          "dataPath": {
+            "type": "string",
+            "minLength": 1
+          },
+          "thumbnail": {
+            "type": "string"
+          },
+          "orientation": {
+            "type": "string"
+          },
+          "status": {
+            "enum": [
+              "draft",
+              "review",
+              "published",
+              "unpublished"
+            ]
+          },
+          "translations": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "object",
+              "properties": {
+                "buttonLabel": {
+                  "type": "string"
+                }
+              },
+              "additionalProperties": true
+            }
+          }
+        },
+        "additionalProperties": true
+      }
+    },
+    "translations": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": true
+      }
+    }
+  },
+  "additionalProperties": true
+}

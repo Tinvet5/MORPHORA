@@ -1,0 +1,32 @@
+MORPHORA V4.4 — Content Authoring Studio
+
+ADDED
+- Separate branded Studio workspace at studio.html.
+- #/studio redirect from the main application.
+- Species, system, collection, and view selectors generated from MORPHORA JSON.
+- Existing-label loading and visual editing.
+- Click-to-create anatomical labels.
+- Draggable anatomical anchors and text boxes.
+- Normalized coordinate editing.
+- Optional labelPosition field for precise text placement.
+- Label search, duplicate, delete, and inspector controls.
+- Category and publishing-status fields.
+- Browse, Add label, and Student preview modes.
+- Undo and redo history.
+- LocalStorage draft saving and restoration.
+- Unsaved-change protection.
+- JSON validation, import, clipboard copy, and file export.
+- Keyboard shortcuts.
+- Responsive Studio layout.
+- noindex metadata for the Studio page.
+
+UPDATED
+- Main atlas renderer now understands optional labelPosition coordinates.
+- Main view validator preserves additional editorial metadata.
+- Cache version increased to 4.4.0.
+- VIEW-TEMPLATE.json expanded with the new optional fields.
+
+SECURITY NOTE
+- The first Studio version is not authenticated.
+- It cannot write to GitHub or publish content directly.
+- Use locally or add protected authentication before treating it as a private online CMS.

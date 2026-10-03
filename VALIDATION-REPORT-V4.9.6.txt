@@ -1,0 +1,16 @@
+MORPHORA V4.9.6 — Project Validation Report
+Generated: 2026-10-02T17:12:49.418925+00:00
+
+Errors: 0
+Warnings: 1
+Passes: 5
+
+WARNING
+- ASSET_MISSING [data/views/dog-cervical-c1-dorsal.json · image.src]: Asset not found: images/dog/vertebral-column/cervical/dog-cervical-c1-dorsal.jpg
+
+PASS
+- QUESTION_BANKS: Validated 1 custom question bank(s) and 0 authored question(s).
+- PROJECT_GRAPH: Traversed 1 species, 2 collection manifests and 6 views.
+- SCHEMA_VERSION: Canonical schema version 2 is enforced by repository schemas.
+- VERSION_CONSISTENCY: Runtime, release metadata and package version checked against 4.9.6.
+- DEPLOYMENT_GATE: GitHub Pages deployment workflow is validation-gated and artifact-based.

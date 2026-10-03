@@ -1,0 +1,183 @@
+{
+  "schemaVersion": 2,
+  "defaultSpeciesId": "dog",
+  "species": [
+    {
+      "id": "dog",
+      "name": "Dog",
+      "scientificName": "Canis lupus familiaris",
+      "description": "Explore the current canine anatomy collections available in MORPHORA.",
+      "status": "available",
+      "dataPath": "data/species/dog.json",
+      "searchTerms": [
+        "canine",
+        "canis",
+        "dog anatomy",
+        "veterinary osteology"
+      ],
+      "coverImage": "images/thumbnails/species/dog.jpg",
+      "featured": true,
+      "translations": {
+        "es": {
+          "name": "Perro",
+          "description": "Explora las colecciones actuales de anatomía canina disponibles en MORPHORA.",
+          "searchTerms": [
+            "Perro",
+            "Canis lupus familiaris"
+          ]
+        },
+        "en": {
+          "name": "Dog",
+          "description": "Explore the current canine anatomy collections available in MORPHORA.",
+          "searchTerms": [
+            "canine",
+            "canis",
+            "dog anatomy",
+            "veterinary osteology"
+          ]
+        }
+      }
+    },
+    {
+      "id": "horse",
+      "name": "Horse",
+      "scientificName": "Equus caballus",
+      "description": "Equine anatomy collections are planned for a future release.",
+      "status": "coming-soon",
+      "searchTerms": [
+        "equine",
+        "equus",
+        "horse anatomy"
+      ],
+      "plannedFocus": [
+        "Skeletal anatomy",
+        "Limb anatomy",
+        "Head and neck"
+      ],
+      "translations": {
+        "es": {
+          "name": "Caballo",
+          "description": "Las colecciones de anatomía equina están planificadas para una futura versión.",
+          "searchTerms": [
+            "Caballo",
+            "Equus caballus"
+          ]
+        },
+        "en": {
+          "name": "Horse",
+          "description": "Equine anatomy collections are planned for a future release.",
+          "searchTerms": [
+            "equine",
+            "equus",
+            "horse anatomy"
+          ]
+        }
+      }
+    },
+    {
+      "id": "cat",
+      "name": "Cat",
+      "scientificName": "Felis catus",
+      "description": "Feline anatomy collections are planned for a future release.",
+      "status": "coming-soon",
+      "searchTerms": [
+        "feline",
+        "felis",
+        "cat anatomy"
+      ],
+      "plannedFocus": [
+        "Skeletal anatomy",
+        "Regional anatomy"
+      ],
+      "translations": {
+        "es": {
+          "name": "Gato",
+          "description": "Las colecciones de anatomía felina están planificadas para una futura versión.",
+          "searchTerms": [
+            "Gato",
+            "Felis catus"
+          ]
+        },
+        "en": {
+          "name": "Cat",
+          "description": "Feline anatomy collections are planned for a future release.",
+          "searchTerms": [
+            "feline",
+            "felis",
+            "cat anatomy"
+          ]
+        }
+      }
+    },
+    {
+      "id": "cattle",
+      "name": "Cattle",
+      "scientificName": "Bos taurus",
+      "description": "Bovine anatomy collections are planned for a future release.",
+      "status": "coming-soon",
+      "searchTerms": [
+        "bovine",
+        "bos",
+        "ruminant anatomy"
+      ],
+      "plannedFocus": [
+        "Skeletal anatomy",
+        "Digestive anatomy"
+      ],
+      "translations": {
+        "es": {
+          "name": "Bovino",
+          "description": "Las colecciones de anatomía bovina están planificadas para una futura versión.",
+          "searchTerms": [
+            "Bovino",
+            "Bos taurus"
+          ]
+        },
+        "en": {
+          "name": "Cattle",
+          "description": "Bovine anatomy collections are planned for a future release.",
+          "searchTerms": [
+            "bovine",
+            "bos",
+            "ruminant anatomy"
+          ]
+        }
+      }
+    },
+    {
+      "id": "rabbit",
+      "name": "Rabbit",
+      "scientificName": "Oryctolagus cuniculus",
+      "description": "Lagomorph anatomy collections are planned for a future release.",
+      "status": "coming-soon",
+      "searchTerms": [
+        "lagomorph",
+        "oryctolagus",
+        "rabbit anatomy"
+      ],
+      "plannedFocus": [
+        "Skeletal anatomy",
+        "Regional anatomy"
+      ],
+      "translations": {
+        "es": {
+          "name": "Conejo",
+          "description": "Las colecciones de anatomía de lagomorfos están planificadas para una futura versión.",
+          "searchTerms": [
+            "Conejo",
+            "Oryctolagus cuniculus"
+          ]
+        },
+        "en": {
+          "name": "Rabbit",
+          "description": "Lagomorph anatomy collections are planned for a future release.",
+          "searchTerms": [
+            "lagomorph",
+            "oryctolagus",
+            "rabbit anatomy"
+          ]
+        }
+      }
+    }
+  ]
+}

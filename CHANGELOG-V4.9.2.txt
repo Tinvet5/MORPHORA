@@ -1,0 +1,34 @@
+MORPHORA V4.9.2 — Design System & Visual Overhaul
+
+ADDED
+- New design-system.css visual architecture layer.
+- Canonical spacing, surface, border, radius, shadow and brand-color tokens.
+- Minimal homepage hero using “Explore. Learn. Understand.”
+- Persistent desktop atlas control dock.
+- Desktop right-side structure inspector.
+- Refined mobile floating atlas toolbar.
+- Reusable .ds-chip and .ds-divider visual primitives.
+
+CHANGED
+- Homepage CTA renamed to “Enter the atlas”.
+- Species section renamed to “Explore by species”.
+- Header made quieter and more compact visually.
+- Species cards simplified and made more image-forward.
+- Atlas controls separated into viewer, views, learning and personal-workspace groups.
+- Labels, structure panel, drawers, dialogs and viewer states aligned to the new visual system.
+- Performance audit now includes design-system.css in the core shell budget.
+- Service worker and release builder include design-system.css.
+- App/release version updated to 4.9.2.
+
+UNCHANGED
+- Atlas content/data schemas.
+- OpenSeadragon/Deep Zoom behavior.
+- Study and Quiz engines.
+- Notes, drawings and progress storage.
+- Studio content pipeline.
+- Validation and release deployment gate.
+
+VALIDATION
+- 0 project errors.
+- 1 expected warning: missing unpublished canine cervical starter photograph.
+- 0 performance budget warnings.

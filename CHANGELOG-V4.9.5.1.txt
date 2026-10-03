@@ -1,0 +1,14 @@
+MORPHORA V4.9.5.1 — Loading-State Hotfix
+
+FIXED
+- Eliminated brief anatomical-image flash during view changes.
+- Kept the loading screen visible until the active OpenSeadragon source has produced its first tile.
+- Added a two-frame paint handoff before revealing the viewer.
+- Prevented stale tile events from an outgoing view from dismissing the incoming loading state when tiledImage identity is available.
+- Made loading shields fully opaque in both the student atlas and Content Studio.
+- Added hotfix cache-busting for local/static asset URLs.
+
+UNCHANGED
+- V4.9.5 storage abstraction and persistence model.
+- V2 content schemas and user-data schemas.
+- Deep Zoom tile sets and atlas JSON.

@@ -1,0 +1,63 @@
+{
+  "schemaVersion": 2,
+  "id": "dog-skull-cranial",
+  "title": "Canine skull — cranial view",
+  "orientation": "cranial",
+  "image": {
+    "type": "dzi",
+    "src": "tiles/dog-skull-cranial/dog-skull-cranial.dzi",
+    "fallback": "images/craneal.jpg",
+    "thumbnail": "images/thumbnails/views/dog-skull-cranial.webp",
+    "width": 6000,
+    "height": 4000,
+    "alt": "Cranial view of a canine skull"
+  },
+  "labels": [
+    {
+      "id": "cribriform-plate",
+      "name": "Lamina Cribosa",
+      "description": "La lamina cribosa...",
+      "position": {
+        "x": 0.35,
+        "y": 0.45
+      },
+      "category": "bone-landmark",
+      "status": "published",
+      "quiz": {
+        "eligible": true,
+        "difficulty": "intermediate",
+        "acceptedRadius": 0.05
+      },
+      "translations": {
+        "es": {
+          "name": "Lamina Cribosa",
+          "description": "La lamina cribosa...",
+          "aliases": [
+            "Lamina Cribosa",
+            "Lámina cribosa"
+          ]
+        },
+        "en": {
+          "name": "Cribriform plate",
+          "description": "The cribriform plate...",
+          "aliases": [
+            "cribriform plate",
+            "lamina cribrosa"
+          ]
+        }
+      },
+      "terminology": {
+        "latin": "Lamina cribrosa"
+      }
+    }
+  ],
+  "status": "published",
+  "translations": {
+    "es": {
+      "title": "Cráneo canino — vista craneal"
+    },
+    "en": {
+      "title": "Canine skull — cranial view"
+    }
+  }
+}
