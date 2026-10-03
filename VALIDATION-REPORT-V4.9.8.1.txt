@@ -1,0 +1,18 @@
+MORPHORA V4.9.8.1 — Hotfix Validation Notes
+
+Issue addressed
+- The Draw on image button could appear visually but fail to respond because drawing.js initialized before script.js had finished exposing window.MorphoraAtlas.
+
+Expected result
+- Clicking Draw on image after opening an anatomical view should activate drawing mode, show the drawing toolbar, hide labels temporarily, and allow pen/highlighter/eraser tools to work.
+
+Recommended manual test
+1. Hard-refresh the deployed page after pushing this build.
+2. Open a dog skull view.
+3. Click Draw on image.
+4. Confirm the drawing toolbar appears.
+5. Draw with Pen.
+6. Switch to Highlighter and draw.
+7. Use Eraser.
+8. Click Done and confirm normal navigation returns.
+9. Reload the page and confirm saved strokes reappear for the same anatomical view.
