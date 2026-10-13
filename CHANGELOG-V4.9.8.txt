@@ -1,0 +1,17 @@
+MORPHORA V4.9.8 — Release Candidate / Production Audit
+
+- Added a dedicated automated release-candidate audit gate.
+- Wired the RC gate into npm check, CI, release verification, and deployment metadata.
+- Production release builds now require both project validation and RC audit success.
+- Enforced duplicate-ID, single-main-landmark, ARIA/form-reference, alt-text, explicit-button-type, and safe external-link checks.
+- Enforced bilingual dictionary parity and critical V4.9.8 runtime translation keys.
+- Enforced runtime/cache-buster version consistency and service-worker shell integrity.
+- Fixed nested <main> semantics in the atlas viewer.
+- Added keyboard-complete language menu navigation (Arrow Up/Down, Home, End, Escape).
+- Localized offline/online connection status, fallback-image badge/announcement, navigation error titles, and theme-toggle accessible labels.
+- Prevented false “Connection restored” announcements on normal online startup.
+- Made the fallback-image badge use a localized runtime data attribute.
+- Hardened runtime navigation errors against HTML injection by rendering error details with textContent.
+- Improved theme behavior: native color-scheme support, system-theme following until a manual preference is saved, localized accessible theme labels.
+- Added noopener+noreferrer protection to Studio/Diagnostics new-tab links.
+- No anatomy data, label coordinates, schemas, Deep Zoom assets, notes, drawings, progress records, or question formats changed.

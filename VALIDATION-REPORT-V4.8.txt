@@ -1,0 +1,40 @@
+MORPHORA V4.8 VALIDATION REPORT
+Release: 4.8.1
+Generated: 2026-08-02
+
+
+> morphora-atlas@4.8.1 check
+> npm run check:js && npm run check:static && npm run validate
+
+
+> morphora-atlas@4.8.1 check:js
+> node --check app-config.js && node --check performance.js && node --check accessibility.js && node --check script.js && node --check study.js && node --check navigation.js && node --check studio/studio.js && node --check service-worker.js
+
+
+> morphora-atlas@4.8.1 check:static
+> python tools/check_static.py
+
+MORPHORA static check
+✓ HTML references resolved
+✓ JavaScript DOM ids resolved
+✓ Local HTML assets found
+✓ CSS braces balanced
+✓ Service-worker shell assets found
+
+> morphora-atlas@4.8.1 validate
+> python tools/validate_atlas.py
+
+MORPHORA atlas validation
+
+✓ Catalog and manifest traversal complete
+  Species checked:    1
+  Collections checked:    2
+  Views checked:          6
+  Labels checked:        12
+  Deep Zoom views:        5
+  Standard images:        1
+
+Warnings:
+  ! View dog-cervical-c1-dorsal.image.src: asset not found: images/dog/vertebral-column/cervical/dog-cervical-c1-dorsal.jpg
+
+Validation completed with 0 error(s) and 1 warning(s).

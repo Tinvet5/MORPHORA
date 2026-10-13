@@ -1,0 +1,11 @@
+MORPHORA V5.0.4.1 — Cloud Sync Foundation
+
+- Added durable account-scoped local mutation queue.
+- Added retry/backoff and online/auth-triggered queue flushing.
+- Added revision-aware cloud mutations and explicit conflict state.
+- Added mutation/client IDs for idempotency and device traceability.
+- Added soft-delete tombstones and incremental cloud change listing.
+- Added Supabase migration 202610050001_v5_cloud_sync_foundation.sql.
+- Added Developer Diagnostics cloud-sync status and manual flush control.
+- Added cloud-sync runtime/security/release gates.
+- Kept existing notes/drawings/progress local by default.

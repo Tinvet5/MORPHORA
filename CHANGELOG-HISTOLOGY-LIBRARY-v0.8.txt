@@ -1,0 +1,10 @@
+MORPHORA Histology Library v0.8 — Hosted Whole-Slide Architecture
+
+- Added DZI source-provider runtime.
+- Added Auto / Hosted DZI / PMA.start delivery modes.
+- Added hosted descriptor configuration to Histology Setup.
+- Added automatic hosted-first → PMA.start fallback behavior.
+- Added DZI conversion, validation, local CORS serving and manifest registration tools.
+- Added manifest `delivery` configuration to all six current slides.
+- Preserved v0.7.1 viewport/sidebar hotfix and v0.7 cloud-sync behavior.
+- No Supabase migration required.

@@ -1,0 +1,23 @@
+MORPHORA Histology Library v0.8.1 — Hosted Slide Pilot & Integrity Checks
+
+ADDED
+- In-viewer Hosted source check.
+- One-click local DZI pilot mode.
+- Restore Auto source control.
+- Strict DZI dimension integrity protection.
+- Hueso-4 pilot orchestration script.
+- Hosted production URL checker with optional CORS enforcement.
+- Windows Hueso-4 pilot helpers.
+- Git guard for generated hosted-slides pyramids.
+
+UNCHANGED
+- Six-slide Histology catalog.
+- PMA.start local fallback.
+- Histology Studio and official structure manifests.
+- Personal labels/color zones.
+- Study, Quiz and Locate.
+- Histology cloud sync.
+- v0.7.1 viewport/sidebar fix.
+
+DATABASE
+- No migration required.

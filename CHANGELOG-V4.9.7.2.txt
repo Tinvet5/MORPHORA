@@ -1,0 +1,10 @@
+MORPHORA V4.9.7.2 — Footer & Theme Polish
+
+- Repaired the malformed V4.9.7.1 footer CSS append that contained literal \n characters.
+- Constrained the footer MORPHORA mark so it can no longer expand into the page background.
+- Replaced text abbreviations (@ / YT / IG / TT) with lightweight inline SVG icons.
+- Kept Email, YouTube, Instagram and TikTok as four independent accessible links.
+- Made the language selector and dropdown use the active MORPHORA design-system theme tokens.
+- Added responsive footer behavior for tablet and mobile widths.
+- Added localized visible Email/Correo footer text.
+- No anatomy data, Deep Zoom, Study/Quiz, storage schema, coordinates, or user-data changes.

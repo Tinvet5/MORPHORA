@@ -1,0 +1,37 @@
+MORPHORA V4.9.2 — VALIDATION REPORT
+
+Release: Design System & Visual Overhaul
+
+Automated checks completed:
+✓ JavaScript syntax
+✓ Python compilation
+✓ V1 → V2 model migration tests
+✓ Central validation-rule tests
+✓ HTML asset references
+✓ DOM ID references
+✓ CSS brace validation (including design-system.css)
+✓ Canonical JSON Schema parsing
+✓ Service-worker shell assets
+✓ Schema migration check
+✓ Atlas/project validation
+✓ Static performance budget audit
+✓ Production release build
+✓ Production artifact verification
+
+Project validation result:
+0 errors
+1 expected warning
+
+Expected warning:
+data/views/dog-cervical-c1-dorsal.json references the intentionally absent starter photograph:
+images/dog/vertebral-column/cervical/dog-cervical-c1-dorsal.jpg
+
+Performance audit after design-system addition:
+Core shell: ~460 KiB
+Thumbnails: 7 / ~178 KiB
+Fallback images: 5 / ~4.99 MiB
+Deep Zoom tiles: 2,605 / ~6.97 MiB
+Performance errors: 0
+Performance warnings: 0
+
+Manual visual verification is still recommended on desktop, iPad/Safari, iPhone/Safari and Android/Chrome because headless Chromium is unreliable in the build environment for OpenSeadragon visual interaction testing.

@@ -1,0 +1,65 @@
+MORPHORA V4.8.4 — Validation Report
+Data Model & Schema Cleanup
+
+AUTOMATED PROJECT CHECK
+Command: npm run check
+Result: PASS
+
+JavaScript syntax
+✓ app-config.js
+✓ models.js
+✓ performance.js
+✓ accessibility.js
+✓ script.js
+✓ study.js
+✓ drawing.js
+✓ navigation.js
+✓ studio/storage.js
+✓ studio/studio.js
+✓ service-worker.js
+
+Model tests
+✓ V1 view migration to V2
+✓ Canonical nested quiz metadata
+✓ Non-enumerable V1 compatibility aliases
+✓ Legacy collection migration
+✓ Central validation rules
+✓ User-data migration
+
+Static checks
+✓ HTML/ARIA references resolved
+✓ JavaScript DOM IDs resolved
+✓ Local HTML assets found
+✓ CSS braces balanced
+✓ Canonical JSON Schema documents parsed
+✓ Service-worker shell assets found
+
+Schema migration check
+✓ All packaged atlas JSON is already canonical V2
+
+Atlas validation
+✓ Catalog and manifest traversal complete
+✓ Species checked: 1
+✓ Collections checked: 2
+✓ Views checked: 6
+✓ Labels checked: 12
+✓ Deep Zoom views: 5
+✓ Standard images: 1
+
+Python migration utility test
+✓ V1 view detected by --check
+✓ --check returned migration-needed state without writing
+✓ --write converted V1 → V2
+✓ Timestamped backup created
+✓ Nested quiz object produced
+✓ Legacy quiz fields removed from canonical output
+
+FINAL RESULT
+0 errors
+1 expected warning
+
+EXPECTED WARNING
+View dog-cervical-c1-dorsal.image.src is not present because the cervical view remains an intentional coming-soon framework.
+
+LIMITATION
+No full real-device browser session was executed in the packaging environment. The release changes are primarily data/model architecture; final local smoke testing through Live Server is still recommended before pushing to production.

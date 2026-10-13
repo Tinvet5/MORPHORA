@@ -1,0 +1,35 @@
+MORPHORA V4.8.4 — Data Model & Schema Cleanup
+
+ADDED
+- Central models.js data layer shared by atlas, navigation and Studio.
+- Canonical schemaVersion 2 for atlas/editorial data.
+- JSON Schema 2020-12 documentation in schemas/.
+- SCHEMA-GUIDE-V4.8.4.md.
+- tools/migrate_schema.py with check/write modes and safety backups.
+- tools/test_models.js migration and compatibility tests.
+- npm scripts: schema:check, schema:migrate, check:models.
+- Automatic V1 → V2 migration for local notes, drawings and learning progress.
+
+CHANGED
+- Quiz fields are grouped under label.quiz in canonical JSON.
+- Collection manifest identity is standardized to speciesId/systemId/collectionId.
+- Studio exports and direct publishing write canonical V2 data.
+- Public atlas and navigation use centralized migration/validation.
+- Deep Zoom starter JSON generator now creates V2 draft views.
+- Atlas validator now enforces V2 quiz and collection structure.
+- Service-worker application shell now includes models.js.
+- Application/cache version bumped to 4.8.4.
+
+COMPATIBILITY
+- Supported V1 view/collection/species/catalog JSON can still be read.
+- Existing Study/Quiz code continues to work through non-enumerable compatibility aliases.
+- V1 localStorage stores are preserved after migration.
+- Future schema versions greater than 2 are rejected.
+
+UNCHANGED
+- Student-facing layout and navigation.
+- Deep Zoom behavior.
+- Drawing UI.
+- Personal notes UI.
+- Study and Quiz workflows.
+- V4.8.3 Studio publishing pipeline.

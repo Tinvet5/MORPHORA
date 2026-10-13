@@ -1,0 +1,46 @@
+{
+  "schemaVersion": 1,
+  "collectionId": "example-collection",
+  "questions": [
+    {
+      "id": "example-question-01",
+      "type": "multiple-choice",
+      "prompt": "Replace this with a custom authored anatomy question.",
+      "options": [
+        "Correct answer",
+        "Distractor A",
+        "Distractor B",
+        "Distractor C"
+      ],
+      "correctIndex": 0,
+      "explanation": "Optional feedback shown after the student answers.",
+      "difficulty": "intermediate",
+      "category": "knowledge",
+      "status": "draft",
+      "viewIds": [],
+      "labelId": null,
+      "translations": {
+        "es": {
+          "prompt": "Pregunta anatómica redactada",
+          "options": [
+            "Respuesta correcta",
+            "Distractor A",
+            "Distractor B",
+            "Distractor C"
+          ],
+          "explanation": "Explicación docente."
+        },
+        "en": {
+          "prompt": "Replace this with a custom authored anatomy question.",
+          "options": [
+            "Correct answer",
+            "Distractor A",
+            "Distractor B",
+            "Distractor C"
+          ],
+          "explanation": "Optional feedback shown after the student answers."
+        }
+      }
+    }
+  ]
+}

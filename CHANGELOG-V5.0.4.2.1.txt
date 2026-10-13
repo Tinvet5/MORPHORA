@@ -1,0 +1,9 @@
+MORPHORA V5.0.4.3 — Interaction Hotfix
+
+- Restored reliable Study, Quiz, Learning Progress and Drawing initialization.
+- Learning/drawing modules now initialize from the explicit morphora:atlas-ready lifecycle.
+- Optional notes/bookmarks UI can no longer abort the core atlas runtime during mixed-cache updates.
+- VS Code Live Server now unregisters MORPHORA service workers and clears MORPHORA caches automatically.
+- Production JS/CSS service-worker requests use network-first exact cache matching to prevent cross-version runtime mixing.
+- Notes/bookmarks cloud-sync behavior remains unchanged.
+- No database migration is required.

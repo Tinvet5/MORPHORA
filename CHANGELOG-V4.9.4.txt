@@ -1,0 +1,22 @@
+MORPHORA V4.9.4 — Visual Polish & Interaction Detail
+
+ADDED
+- Focus View with discreet exit control and Escape support.
+- Structure category/current-view metadata in the anatomical inspector.
+- Segmented anatomical orientation selector.
+- Typed-text highlighting in label autocomplete.
+- Shared motion/easing tokens.
+- Subtle viewer loading sweep.
+
+REFINED
+- Structure inspector hierarchy and mobile bottom-sheet styling.
+- Anatomical label boxes, connector lines, anchor dots and active state.
+- Search result context and information density.
+- Atlas panel/menu transition feel.
+
+UNCHANGED
+- V2 schemas and atlas content model.
+- Deep Zoom tile architecture.
+- Studio/content publishing pipeline.
+- Notes, drawings, Study/Quiz and learning progress data.
+- Performance and deployment architecture.

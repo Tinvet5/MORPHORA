@@ -1,0 +1,83 @@
+{
+  "schemaVersion": 3,
+  "id": "hueso-1",
+  "title": {
+    "es": "Muestra ósea 01",
+    "en": "Bone specimen 01"
+  },
+  "subtitle": {
+    "es": "Identificación biológica pendiente.",
+    "en": "Biological identification pending."
+  },
+  "classification": {
+    "branch": "unclassified",
+    "species": {
+      "id": "unknown",
+      "es": "Por confirmar",
+      "en": "To be confirmed"
+    },
+    "system": {
+      "id": "musculoskeletal",
+      "es": "Tejido óseo",
+      "en": "Bone tissue"
+    },
+    "organ": {
+      "id": "bone",
+      "es": "Hueso",
+      "en": "Bone"
+    },
+    "diagnosis": {
+      "es": "Identificación pendiente",
+      "en": "Identification pending"
+    },
+    "stain": {
+      "id": "unconfirmed",
+      "es": "Tinción por confirmar",
+      "en": "Stain to be confirmed"
+    }
+  },
+  "delivery": {
+    "mode": "hosted",
+    "hosted": {
+      "type": "dzi",
+      "descriptorUrl": "https://morphora-histology-gateway.martin-fuentesvet.workers.dev/demo/slides/hueso-1/slide.dzi",
+      "barcodeUrl": ""
+    },
+    "fallback": {
+      "type": "pma-start"
+    }
+  },
+  "source": {
+    "type": "pma-start",
+    "serverUrl": "http://127.0.0.1:54001/",
+    "slidePath": "C:/M-HISTOLOGY/HUESO/Hueso-1/1.mdsx",
+    "sessionId": "SDK.Python"
+  },
+  "image": {
+    "width": 35080,
+    "height": 70058,
+    "tileSize": 512,
+    "maxZoomLevel": 8,
+    "micrometresPerPixelX": 0.267857,
+    "micrometresPerPixelY": 0.267857,
+    "physicalSizeMB": 258.83,
+    "layers": 1,
+    "channels": 1,
+    "format": "Motic MDSX",
+    "compression": "JPEG 75"
+  },
+  "objective": {
+    "nativeMagnification": 40,
+    "presets": [
+      5,
+      10,
+      20,
+      40
+    ]
+  },
+  "associatedImages": {
+    "thumbnail": true,
+    "barcode": true
+  },
+  "structures": []
+}

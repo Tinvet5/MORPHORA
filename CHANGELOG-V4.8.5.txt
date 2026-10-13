@@ -1,0 +1,43 @@
+MORPHORA V4.8.5 — Automated Validation & Developer Tooling
+
+ADDED
+- Authoritative tools/validate_project.py project validator.
+- Shared tools/validation_core.py issue/report model.
+- Stable validation issue codes with severity, path and repair hints.
+- validation/rules.js browser validation layer shared by Studio and diagnostics.
+- dev-tools.html developer diagnostics dashboard.
+- dev-tools.css and dev-tools.js.
+- Local JSON and TXT validation reports under reports/.
+- tools/test_validation.js.
+- Published-content readiness checks.
+- Image dimension verification with Pillow.
+- Deep Zoom pyramid integrity and expected-tile validation.
+- Global duplicate view ID/dataPath checks.
+- Runtime/package/cache version consistency validation.
+- GitHub Actions report artifact upload.
+
+CHANGED
+- npm run check now runs browser-rule tests and the authoritative project validator.
+- Studio validation uses the V4.8.5 shared validation rules.
+- Studio includes a shortcut to Developer Diagnostics.
+- GitHub validation workflow installs requirements and runs npm run check.
+- tools/requirements.txt now includes jsonschema.
+- Service-worker shell includes validation and diagnostics assets.
+- Static checker includes dev-tools.html and dev-tools.css.
+- Application/cache version bumped to 4.8.5.
+- Starter dog-cervical-c1-dorsal view is explicitly draft and image.type=image.
+
+VALIDATION POLICY
+- Errors fail npm run check.
+- Warnings are review items and do not fail the build.
+- Published views in available collections receive stricter asset requirements.
+- Draft/coming-soon content can retain incomplete assets as warnings.
+
+UNCHANGED
+- Student-facing atlas layout.
+- Study and Quiz workflows.
+- Drawing tools.
+- Personal notes.
+- Deep Zoom runtime behavior.
+- V4.8.3 Studio content creation and direct local publishing workflow.
+- V4.8.4 schema version remains V2.

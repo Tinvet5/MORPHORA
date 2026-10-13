@@ -1,0 +1,36 @@
+MORPHORA V4.9.4 — Validation & Release Summary
+
+Project validation
+- Version: 4.9.4
+- Errors: 0
+- Warnings: 1
+- Species: 1
+- Collections: 2
+- Views: 6
+- Labels: 12
+
+Expected warning
+- ASSET_MISSING: data/views/dog-cervical-c1-dorsal.json references the intentionally pending photograph images/dog/vertebral-column/cervical/dog-cervical-c1-dorsal.jpg.
+
+Performance audit
+- Core shell: 490.2 KiB
+- Thumbnails: 7 files / 177.9 KiB
+- Fallback images: 5 files / 4.99 MiB
+- Deep Zoom tiles: 2,605 files / 6.97 MiB
+- Average tile: 2.7 KiB
+- Largest tile: 11.7 KiB
+- Performance errors: 0
+- Performance warnings: 0
+
+Release verification
+- Release artifact built successfully.
+- Version: 4.9.4
+- Asset version: 4.9.4-dev
+- Validation status: passed
+- Development-only directories excluded from deployment artifact.
+- HTML deployment assets resolved.
+- Release-aware service worker configured.
+
+Automated commands passed
+- npm run check
+- npm run release:verify

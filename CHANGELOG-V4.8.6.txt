@@ -1,0 +1,27 @@
+MORPHORA V4.8.6 — Deployment & Release Automation
+
+ADDED
+- Validation-gated GitHub Pages deployment workflow.
+- Clean production `dist/` builder.
+- Deployment artifact verification.
+- Commit-aware release metadata (`release.json` and `release-meta.js`).
+- Commit-aware browser/service-worker cache identity.
+- Developer Diagnostics release identity panel.
+- Pull-request preview artifact generation.
+- Manual ref deployment for controlled V4.8.6+ redeploys/rollbacks.
+- Release metadata and validation report GitHub Actions artifacts.
+- `npm run build:release`, `check:release`, `release:verify`, and `ci` commands.
+
+CHANGED
+- Runtime version advanced to 4.8.6.
+- Service-worker registration now includes the exact release asset version.
+- Service-worker cache names use semantic version + short commit.
+- Runtime JSON fetches use the release asset version for cache busting.
+- Production Pages deployment is designed to use GitHub Actions rather than serving the main branch directly.
+- Validation now verifies release metadata wiring and the deployment gate workflow.
+
+PRESERVED
+- V4.8.5 validator and diagnostics.
+- V4.8.4 canonical schema V2.
+- V4.8.3 Studio pipeline hardening.
+- Study/Quiz, persistent annotations, drawing layer, Deep Zoom, accessibility and navigation behavior.

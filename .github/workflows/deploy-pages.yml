@@ -1,0 +1,110 @@
+name: Deploy MORPHORA to GitHub Pages
+
+on:
+  push:
+    branches: [main, master]
+  workflow_dispatch:
+    inputs:
+      ref:
+        description: "Git branch, tag, or commit to deploy (V4.9.4+ recommended for rollbacks)"
+        required: false
+        default: "main"
+        type: string
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: morphora-pages-production
+  cancel-in-progress: false
+
+jobs:
+  build:
+    name: Validate and build release
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out release source
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event_name == 'workflow_dispatch' && inputs.ref || github.sha }}
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Install validator dependencies
+        run: python -m pip install -r tools/requirements.txt
+
+      - name: Run deployment gate
+        run: npm run check
+
+      - name: Read checked-out release identity
+        id: release
+        shell: bash
+        run: |
+          echo "commit=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
+          echo "short_commit=$(git rev-parse --short=8 HEAD)" >> "$GITHUB_OUTPUT"
+          echo "ref=$(git symbolic-ref --short -q HEAD || git describe --tags --always)" >> "$GITHUB_OUTPUT"
+
+      - name: Build deployment artifact
+        env:
+          MORPHORA_COMMIT: ${{ steps.release.outputs.commit }}
+          MORPHORA_SHORT_COMMIT: ${{ steps.release.outputs.short_commit }}
+          MORPHORA_REF: ${{ steps.release.outputs.ref }}
+          MORPHORA_RUN_ID: ${{ github.run_id }}
+          MORPHORA_REPOSITORY: ${{ github.repository }}
+          MORPHORA_BUILD_URL: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}
+          MORPHORA_DEPLOYMENT_TARGET: github-pages
+        run: npm run release:verify
+
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload validation report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: morphora-validation-${{ steps.release.outputs.short_commit || github.run_id }}
+          path: reports/validation-report.*
+          if-no-files-found: ignore
+          retention-days: 30
+
+      - name: Upload release metadata
+        if: success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: morphora-release-${{ steps.release.outputs.short_commit }}
+          path: |
+            dist/release.json
+            dist/release-meta.js
+          if-no-files-found: error
+          retention-days: 90
+
+      - name: Upload GitHub Pages artifact
+        if: success()
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+
+  deploy:
+    name: Publish validated release
+    needs: build
+    if: success()
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

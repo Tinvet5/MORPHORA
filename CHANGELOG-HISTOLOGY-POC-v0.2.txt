@@ -1,0 +1,9 @@
+MORPHORA Histology POC v0.2
+- Promoted Histology to a dedicated MORPHORA module/landing page.
+- Added pink-purple Histology theme for light and dark modes.
+- Added slide catalog and scanner-independent manifest architecture.
+- Registered slide 48515-2 as equine abscessed lymph node, H&E, histopathology.
+- Added bilingual EN/ES Histology interface and specimen metadata.
+- Restyled the working PMA.start/OpenSeadragon viewer without changing tile transport.
+- Added structure schema foundation for future Histology Studio labels/regions.
+- Added Histology validation and offline shell routes.

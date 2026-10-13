@@ -1,0 +1,227 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://morphora.cl/schemas/view.schema.json",
+  "title": "MORPHORA View Schema v2",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "id",
+    "title",
+    "orientation",
+    "status",
+    "image",
+    "labels"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": 2
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+    },
+    "title": {
+      "type": "string"
+    },
+    "orientation": {
+      "type": "string"
+    },
+    "status": {
+      "enum": [
+        "draft",
+        "review",
+        "published",
+        "unpublished"
+      ]
+    },
+    "image": {
+      "type": "object",
+      "required": [
+        "type",
+        "src",
+        "width",
+        "height",
+        "alt"
+      ],
+      "properties": {
+        "type": {
+          "enum": [
+            "image",
+            "dzi"
+          ]
+        },
+        "src": {
+          "type": "string",
+          "minLength": 1
+        },
+        "fallback": {
+          "type": "string"
+        },
+        "thumbnail": {
+          "type": "string"
+        },
+        "width": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "height": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "alt": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": true
+    },
+    "labels": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "name",
+          "description",
+          "position",
+          "category",
+          "status",
+          "quiz"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+          },
+          "name": {
+            "type": "string",
+            "minLength": 1
+          },
+          "description": {
+            "type": "string"
+          },
+          "position": {
+            "type": "object",
+            "required": [
+              "x",
+              "y"
+            ],
+            "properties": {
+              "x": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1
+              },
+              "y": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1
+              }
+            },
+            "additionalProperties": false
+          },
+          "labelPosition": {
+            "type": "object",
+            "required": [
+              "x",
+              "y"
+            ],
+            "properties": {
+              "x": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1
+              },
+              "y": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1
+              }
+            },
+            "additionalProperties": false
+          },
+          "category": {
+            "type": "string"
+          },
+          "status": {
+            "enum": [
+              "draft",
+              "review",
+              "published",
+              "unpublished"
+            ]
+          },
+          "quiz": {
+            "type": "object",
+            "required": [
+              "eligible",
+              "difficulty",
+              "acceptedRadius"
+            ],
+            "properties": {
+              "eligible": {
+                "type": "boolean"
+              },
+              "difficulty": {
+                "enum": [
+                  "beginner",
+                  "intermediate",
+                  "advanced"
+                ]
+              },
+              "acceptedRadius": {
+                "type": "number",
+                "minimum": 0.005,
+                "maximum": 0.2
+              }
+            },
+            "additionalProperties": true
+          },
+          "translations": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string"
+                },
+                "description": {
+                  "type": "string"
+                },
+                "aliases": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              },
+              "additionalProperties": true
+            }
+          },
+          "terminology": {
+            "type": "object",
+            "properties": {
+              "latin": {
+                "type": "string"
+              }
+            },
+            "additionalProperties": true
+          }
+        },
+        "additionalProperties": true
+      }
+    },
+    "translations": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": true
+      }
+    }
+  },
+  "additionalProperties": true
+}

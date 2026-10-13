@@ -1,0 +1,9 @@
+MORPHORA V4.9.7.1 — Translation Completeness & Brand Footer
+
+- Expanded ES/EN coverage in the public app and Content Studio.
+- Added explicit localization for dynamic notes, drawing, Study/Quiz, viewer, and discovery states.
+- Improved automatic localization for ARIA labels, titles, placeholders, anchors, and summary text.
+- Added MORPHORA social/contact footer with centralized public links.
+- Added exact copyright line: © 2026 MORPHORA All rights reserved.
+- Hardened i18n regression tests.
+- No schema, Deep Zoom, user-data, or anatomy-coordinate changes.
