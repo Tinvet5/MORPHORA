@@ -1,9 +1,0 @@
-MORPHORA V4.9 static performance audit
-Core shell: 553.9 KiB
-Thumbnails: 7 files / 177.9 KiB
-Fallback images: 5 files / 4.99 MiB
-Deep Zoom tiles: 2605 files / 6.97 MiB
-Average tile: 2.7 KiB
-Largest tile: 11.7 KiB
-Errors: 0
-Warnings: 0
