@@ -1,8 +1,0 @@
-MORPHORA V5.0.4.5
-- Added signed-in Sync Center with user-facing cloud status and queue visibility.
-- Added manual Sync now and retry-all-failed actions.
-- Added per-item failed mutation retry.
-- Added conflict recovery: Keep this device / Use cloud version.
-- Added safe cloud-accept application for notes, bookmarks, drawings, Study progress and Quiz history.
-- Added bilingual EN/ES sync UX and responsive styling.
-- No database migration required.

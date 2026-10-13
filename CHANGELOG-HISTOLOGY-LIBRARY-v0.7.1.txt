@@ -1,9 +1,0 @@
-MORPHORA Histology Library v0.7.1 — Workspace Layout Hotfix
-
-- Clamp desktop Histology shell to the dynamic viewport.
-- Prevent the main workspace and viewer column from growing beyond the available row.
-- Make the left student workspace independently scrollable.
-- Preserve visible bottom padding/safe-area spacing.
-- Restore normal document flow on mobile layouts.
-- Keep all v0.7 cloud-sync, Study/Quiz, Studio, personal-label and account behavior unchanged.
-- No database migration required.

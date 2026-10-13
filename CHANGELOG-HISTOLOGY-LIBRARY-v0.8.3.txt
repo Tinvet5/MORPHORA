@@ -1,9 +1,0 @@
-MORPHORA HISTOLOGY v0.8.3 — Two hosted WSI slides (October 2026)
-- Adds Hueso-1 (35,080 × 70,058 px) and existing Hueso-4 as approved cloud-hosted guest slides.
-- Reuses the original v0.8.2 Histology viewer, OpenSeadragon, and PMA-to-DZI exporter.
-- R2 remains private. Gateway narrowly allows /demo/slides/hueso-1 or hueso-4 descriptor/tiles only when DEMO_ENABLED=true and DEMO_ENDS_AT is in the future.
-- Protected /slides/... access continues to require a valid Supabase JWT and allowlisted user UUID.
-- Other slides remain in the catalog but are not advertised as remotely accessible on morphora.cl.
-- Includes the same working Anatomy Atlas, no redesign, no new application.
-- Uploaded DZI tiles remain in Cloudflare and are not bundled in source.
-- Static and simulated tests are not proof of successful live/cloud/mobile browser delivery.

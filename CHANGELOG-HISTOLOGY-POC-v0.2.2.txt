@@ -1,5 +1,0 @@
-MORPHORA Histology POC v0.2.2 — Slide Workspace Polish
-- Removed viewer-header wordmark/shoulder logo.
-- Compact collapsible slide controls.
-- Non-expanding source editor overlay.
-- Improved short-viewport behavior.

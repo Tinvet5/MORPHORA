@@ -1,7 +1,0 @@
-MORPHORA V5.0.4.5 — Study & Quiz Progress Cloud Sync
-
-- Added local-first cloud sync for Study mastery/progress.
-- Added additive cross-device sync for completed Quiz history.
-- Added conservative merge behavior for learning progress.
-- Added reset/tombstone propagation for cleared learning data.
-- Active Quiz sessions remain device-local.

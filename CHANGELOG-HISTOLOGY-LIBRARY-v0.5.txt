@@ -1,9 +1,0 @@
-MORPHORA Histology Library v0.5
-- Added Histology Studio point authoring.
-- Added polygon/region authoring.
-- Added bilingual structure editor.
-- Added edit/reposition/redraw/delete/focus controls.
-- Added per-slide local Studio drafts.
-- Added full slide-manifest JSON export.
-- Student structure overlay/list updates live from Studio drafts.
-- Bumped Histology asset cache identity to v0.5.
