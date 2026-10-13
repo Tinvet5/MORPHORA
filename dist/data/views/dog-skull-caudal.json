@@ -1,0 +1,61 @@
+{
+  "schemaVersion": 2,
+  "id": "dog-skull-caudal",
+  "title": "Canine skull — caudal view",
+  "orientation": "caudal",
+  "image": {
+    "type": "dzi",
+    "src": "tiles/dog-skull-caudal/dog-skull-caudal.dzi",
+    "fallback": "images/caudal.jpg",
+    "thumbnail": "images/thumbnails/views/dog-skull-caudal.webp",
+    "width": 6000,
+    "height": 4000,
+    "alt": "Caudal view of a canine skull"
+  },
+  "labels": [
+    {
+      "id": "foramen-magnum-caudal",
+      "name": "Agujero Magno",
+      "description": "El agujero magno...",
+      "position": {
+        "x": 0.52,
+        "y": 0.53
+      },
+      "category": "foramen",
+      "status": "published",
+      "quiz": {
+        "eligible": true,
+        "difficulty": "intermediate",
+        "acceptedRadius": 0.035
+      },
+      "translations": {
+        "es": {
+          "name": "Agujero Magno",
+          "description": "El agujero magno...",
+          "aliases": [
+            "Agujero Magno"
+          ]
+        },
+        "en": {
+          "name": "Foramen magnum",
+          "description": "The foramen magnum...",
+          "aliases": [
+            "foramen magnum"
+          ]
+        }
+      },
+      "terminology": {
+        "latin": "Foramen magnum"
+      }
+    }
+  ],
+  "status": "published",
+  "translations": {
+    "es": {
+      "title": "Cráneo canino — vista caudal"
+    },
+    "en": {
+      "title": "Canine skull — caudal view"
+    }
+  }
+}

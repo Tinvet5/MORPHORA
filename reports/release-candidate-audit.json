@@ -1,0 +1,20 @@
+{
+  "product": "MORPHORA",
+  "version": "4.9.8",
+  "gate": "release-candidate",
+  "summary": {
+    "errors": 0,
+    "warnings": 0,
+    "passes": 6
+  },
+  "errors": [],
+  "warnings": [],
+  "passes": [
+    "HTML landmarks, ids, form/ARIA references, image alts, button types, and external-link safety checked",
+    "Runtime, release metadata, validator, and HTML cache-busters aligned to V4.9.8",
+    "Localization parity checked across 532 UI keys in EN/ES, including keyboard language selection",
+    "Service-worker shell verified (33 versioned runtime assets)",
+    "CSS corruption sentinel, reduced-motion, safe-area, and localized fallback badge checked",
+    "Public contact/social endpoints checked for expected secure destinations"
+  ]
+}

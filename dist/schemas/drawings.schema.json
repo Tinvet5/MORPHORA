@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "MORPHORA Drawing Store v2",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "preferences",
+    "views"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": 2
+    },
+    "updatedAt": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "preferences": {
+      "type": "object"
+    },
+    "views": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "array"
+      }
+    }
+  },
+  "additionalProperties": true
+}

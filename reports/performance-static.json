@@ -1,0 +1,75 @@
+{
+  "generatedAt": "2026-10-02T23:49:24.986352+00:00",
+  "budgets": {
+    "shellBytesWarning": 1600000,
+    "singleJsBytesWarning": 400000,
+    "thumbnailBytesWarning": 220000,
+    "fallbackImageBytesWarning": 6000000,
+    "tileBytesWarning": 320000,
+    "tileBytesError": 1000000
+  },
+  "summary": {
+    "shellBytes": 567179,
+    "thumbnailCount": 7,
+    "thumbnailBytes": 182156,
+    "fallbackImageCount": 5,
+    "fallbackImageBytes": 5228843,
+    "tileCount": 2605,
+    "tileBytes": 7304145,
+    "largestTileBytes": 11975,
+    "averageTileBytes": 2803.9,
+    "errors": 0,
+    "warnings": 0
+  },
+  "shell": [
+    {
+      "path": "index.html",
+      "bytes": 41467
+    },
+    {
+      "path": "style.css",
+      "bytes": 133139
+    },
+    {
+      "path": "design-system.css",
+      "bytes": 42110
+    },
+    {
+      "path": "app-config.js",
+      "bytes": 3114
+    },
+    {
+      "path": "models.js",
+      "bytes": 21204
+    },
+    {
+      "path": "storage.js",
+      "bytes": 15372
+    },
+    {
+      "path": "performance.js",
+      "bytes": 23566
+    },
+    {
+      "path": "accessibility.js",
+      "bytes": 4455
+    },
+    {
+      "path": "script.js",
+      "bytes": 102008
+    },
+    {
+      "path": "study.js",
+      "bytes": 79007
+    },
+    {
+      "path": "drawing.js",
+      "bytes": 33688
+    },
+    {
+      "path": "navigation.js",
+      "bytes": 68049
+    }
+  ],
+  "issues": []
+}

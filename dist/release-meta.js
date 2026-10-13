@@ -1,0 +1,5 @@
+(() => {
+  "use strict";
+  const root = typeof window !== "undefined" ? window : self;
+  root.MORPHORA_RELEASE = Object.freeze({"product":"MORPHORA","version":"4.9.8","schemaVersion":2,"userDataSchemaVersion":2,"assetVersion":"4.9.8-dev","commit":"development","shortCommit":"dev","ref":"local","builtAt":"2026-10-02T23:49:26.467266+00:00","validation":"passed","releaseCandidate":"passed","repository":"","runId":"","buildUrl":"","deploymentTarget":"local-build"});
+})();
