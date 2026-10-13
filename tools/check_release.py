@@ -13,13 +13,13 @@ from urllib.parse import urlsplit
 ROOT = Path(__file__).resolve().parents[1]
 DIST = ROOT / "dist"
 ESSENTIAL = {
-    "index.html", "studio.html", "dev-tools.html", "performance-lab.html", "app-config.js", "release-meta.js",
+    "index.html", "studio.html", "dev-tools.html", "performance-lab.html", "histology.html", "histology-poc.html", "histology/histology-menu.css", "histology/histology-menu.js", "histology/histology-poc.css", "histology/histology-poc.js", "histology/catalog.json", "app-config.js", "backend-config.js", "release-meta.js",
     "release.json", "models.js", "storage.js", "i18n/language-manager.js", "i18n/es.json", "i18n/en.json", "style.css", "script.js", "study.js", "drawing.js",
     "navigation.js", "performance.js", "performance-lab.js", "performance-lab.css", "accessibility.js", "service-worker.js",
-    "data/catalog.json", "studio/studio.js", "studio/studio.css", "validation/rules.js",
+    "data/catalog.json", "studio/studio.js", "studio/studio.css", "validation/rules.js", "backend/supabase-loader.js", "backend/backend-client.js", "backend/auth-service.js", "backend/local-vault.js", "backend/profile-service.js", "backend/sync-service.js", "backend/cloud-sync-engine.js", "backend/bookmarks-service.js", "backend/personal-sync-service.js", "backend/histology-sync-service.js", "backend/bookmarks-ui.js", "backend/data-service.js", "backend/preferences-service.js", "backend/bookmarks-ui.js", "backend/sync-center-ui.js", "backend/account-ui.js",
     ".nojekyll",
 }
-FORBIDDEN_TOP_LEVEL = {"tools", "source-images", "reports", ".github", ".git", ".morphora-backups", "node_modules"}
+FORBIDDEN_TOP_LEVEL = {"tools", "source-images", "reports", "database", ".github", ".git", ".morphora-backups", "node_modules"}
 
 
 class AssetParser(HTMLParser):
@@ -72,8 +72,24 @@ def main() -> int:
         problems.append("Release metadata does not record validation=passed")
     if release.get("releaseCandidate") != "passed":
         problems.append("Release metadata does not record releaseCandidate=passed")
+    if release.get("backendFoundation") != "passed":
+        problems.append("Release metadata does not record backendFoundation=passed")
+    if release.get("authentication") != "passed":
+        problems.append("Release metadata does not record authentication=passed")
+    if release.get("profilePreferences") != "passed":
+        problems.append("Release metadata does not record profilePreferences=passed")
+    if release.get("cloudSyncFoundation") != "passed":
+        problems.append("Release metadata does not record cloudSyncFoundation=passed")
+    if release.get("notesBookmarksSync") != "passed":
+        problems.append("Release metadata does not record notesBookmarksSync=passed")
+    if release.get("learningProgressSync") != "passed":
+        problems.append("Release metadata does not record learningProgressSync=passed")
+    if release.get("syncUX") != "passed":
+        problems.append("Release metadata does not record syncUX=passed")
+    if release.get("finalHardening") != "passed":
+        problems.append("Release metadata does not record finalHardening=passed")
 
-    for html_name in ("index.html", "studio.html", "dev-tools.html", "performance-lab.html"):
+    for html_name in ("index.html", "studio.html", "dev-tools.html", "performance-lab.html", "histology.html", "histology-poc.html"):
         html_path = DIST / html_name
         if not html_path.is_file():
             continue
@@ -105,6 +121,13 @@ def main() -> int:
     print(f"✓ Asset version: {asset_version}")
     print("✓ Validation status: passed")
     print("✓ Release candidate gate: passed")
+    print("✓ Backend foundation gate: passed")
+    print("✓ Authentication gate: passed")
+    print("✓ Profile/preferences gate: passed")
+    print("✓ Cloud sync foundation gate: passed")
+    print("✓ Study/Quiz progress sync gate: passed")
+    print("✓ Sync Center UX gate: passed")
+    print("✓ V5 final hardening gate: passed")
     print("✓ Development-only directories excluded")
     print("✓ HTML deployment assets resolved")
     print("✓ Release-aware service worker configured")

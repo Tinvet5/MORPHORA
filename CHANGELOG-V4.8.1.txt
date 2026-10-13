@@ -1,0 +1,28 @@
+MORPHORA V4.8.1 — Studio Refinement
+
+STUDIO POSITIONING
+- Added one-click Place anchor mode.
+- Added one-click Place label mode.
+- Added inspector actions for both coordinate targets.
+- Added Shift-click anchor placement and Alt/Option-click label placement in Browse mode.
+- Added R shortcut for anchor placement and L shortcut for label placement.
+- Improved drag commit behavior and coordinate feedback.
+- Added a movement threshold so simple clicks do not create false drag edits/history entries.
+- Preserved anchor/text offset when moving an anchor.
+- Preserved the anatomical anchor when moving only the label box.
+
+IMAGE INGESTION
+- Added New view from image workflow to Content Studio.
+- Added Replace current image workflow.
+- Supports browser-native JPG, PNG and WebP uploads.
+- Reads image dimensions automatically.
+- Generates sensible view/file defaults from the uploaded filename.
+- Uses temporary local object URLs in Studio while keeping repository paths clean in exported JSON.
+- Added optional direct project-folder writing through the File System Access API.
+- Direct project-folder save can write image + view JSON + collection manifest for new views.
+- Added manual-export fallback guidance for browsers without filesystem writing support.
+- Kept uploaded images compatible with later V4.7 Deep Zoom conversion.
+
+RELEASE
+- Runtime/cache version increased to 4.8.1.
+- Existing public atlas, annotations, Deep Zoom views and Study/Quiz engine remain compatible.

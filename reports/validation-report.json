@@ -1,7 +1,7 @@
 {
-  "validatorVersion": "4.9.8",
-  "generatedAt": "2026-10-02T23:49:24.114462+00:00",
-  "projectRoot": "/mnt/data/MORPHORA-V4.9.8-Release-Candidate",
+  "validatorVersion": "5.0.5",
+  "generatedAt": "2026-10-08T21:14:46.814097+00:00",
+  "projectRoot": "/mnt/data/_v082_build/MORPHORA-V5.0.5-Histology-Library-v0.8.2",
   "summary": {
     "errors": 0,
     "warnings": 1,
@@ -52,7 +52,7 @@
     {
       "severity": "pass",
       "code": "VERSION_CONSISTENCY",
-      "message": "Runtime, release metadata and package version checked against 4.9.8.",
+      "message": "Runtime, release metadata and package version checked against 5.0.5.",
       "path": "",
       "hint": ""
     },

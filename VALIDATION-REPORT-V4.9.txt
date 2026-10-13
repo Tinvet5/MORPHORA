@@ -1,0 +1,67 @@
+MORPHORA V4.9 — Real-World Performance Audit & Optimization
+Final validation report
+
+Application version: 4.9.2
+Schema version: 2
+User-data schema version: 2
+
+AUTOMATED PROJECT CHECK
+✓ JavaScript syntax
+✓ Python tooling compilation
+✓ Model migration tests
+✓ Shared validation-rule tests
+✓ HTML / ARIA / DOM reference checks
+✓ Local asset checks
+✓ CSS structure
+✓ Service-worker shell validation
+✓ Schema V2 migration check
+✓ Full atlas/project validation
+✓ Static performance budget audit
+
+PROJECT VALIDATION
+Species: 1
+Collections: 2
+Views: 6
+Labels: 12
+Errors: 0
+Warnings: 1
+
+Expected warning:
+- data/views/dog-cervical-c1-dorsal.json references the intentionally absent coming-soon cervical photograph.
+
+STATIC PERFORMANCE BASELINE
+Core shell: 440.8 KiB
+Thumbnails: 7 files / 177.9 KiB
+Fallback images: 5 files / 4.99 MiB
+Deep Zoom tiles: 2,605 files / 6.97 MiB
+Average DZI tile: 2.7 KiB
+Largest DZI tile: 11.7 KiB
+Performance-audit errors: 0
+Performance-audit warnings: 0
+
+RELEASE ARTIFACT
+✓ Clean dist/ artifact generated
+✓ Release validation state: passed
+✓ 2,677 files
+✓ 12.96 MiB
+✓ HTML deployment assets resolved
+✓ Release-aware service worker configured
+✓ Performance Lab included in deployment artifact
+
+HTTP SMOKE TEST
+✓ /                       HTTP 200
+✓ /performance-lab.html   HTTP 200
+✓ /dev-tools.html         HTTP 200
+✓ /service-worker.js      HTTP 200
+✓ /data/catalog.json      HTTP 200
+
+RUNTIME PROFILE SMOKE TEST
+✓ Low-memory / 2G simulation selected Constrained profile
+✓ Touch-tablet simulation selected Balanced + immediate-render profile
+✓ High-memory desktop simulation selected High-capacity profile
+
+LIMITATIONS / MANUAL TESTS STILL REQUIRED
+- Real OpenSeadragon frame/tile behavior must be verified in actual desktop/mobile browsers.
+- Safari/iPad/iPhone browser performance APIs expose less device/network information than Chromium; the Performance Lab degrades gracefully.
+- LCP, CLS, long tasks and browser storage results are meaningful only on real devices and real browsing sessions.
+- App performance targets are development goals, not guaranteed timings.

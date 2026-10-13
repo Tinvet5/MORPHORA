@@ -21,7 +21,7 @@ from typing import Any
 
 ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_OUTPUT = ROOT / "dist"
-RUNTIME_DIRS = ("assets", "data", "images", "tiles", "studio", "validation", "schemas", "i18n")
+RUNTIME_DIRS = ("assets", "data", "images", "tiles", "studio", "validation", "schemas", "i18n", "backend", "histology")
 RUNTIME_FILES = (
     ".nojekyll",
     "CNAME",
@@ -29,11 +29,14 @@ RUNTIME_FILES = (
     "studio.html",
     "dev-tools.html",
     "performance-lab.html",
+    "histology.html",
+    "histology-poc.html",
     "style.css",
     "design-system.css",
     "dev-tools.css",
     "performance-lab.css",
     "app-config.js",
+    "backend-config.js",
     "release-meta.js",
     "release.json",
     "models.js",
@@ -80,7 +83,13 @@ def report_passed(filename: str) -> bool:
         return False
     try:
         report = read_json(report_path)
-        return int(report.get("summary", {}).get("errors", 1)) == 0
+        summary = report.get("summary")
+        if isinstance(summary, dict) and "errors" in summary:
+            return int(summary.get("errors", 1)) == 0
+        errors = report.get("errors")
+        if isinstance(errors, list):
+            return len(errors) == 0 and str(report.get("status", "passed")).lower() != "failed"
+        return False
     except Exception:
         return False
 
@@ -97,8 +106,56 @@ def release_candidate_passed() -> bool:
     return report_passed("release-candidate-audit.json")
 
 
+def backend_foundation_passed() -> bool:
+    if os.getenv("MORPHORA_BACKEND_FOUNDATION", "").lower() == "passed":
+        return True
+    return report_passed("backend-foundation-audit.json")
+
+
+def authentication_passed() -> bool:
+    if os.getenv("MORPHORA_AUTHENTICATION", "").lower() == "passed":
+        return True
+    return report_passed("authentication-audit.json")
+
+
+def profile_preferences_passed() -> bool:
+    if os.getenv("MORPHORA_PROFILE_PREFERENCES", "").lower() == "passed":
+        return True
+    return report_passed("profile-preferences-audit.json")
+
+
+def cloud_sync_foundation_passed() -> bool:
+    if os.getenv("MORPHORA_CLOUD_SYNC_FOUNDATION", "").lower() == "passed":
+        return True
+    return report_passed("cloud-sync-foundation-audit.json")
+
+
+def notes_bookmarks_sync_passed() -> bool:
+    if os.getenv("MORPHORA_NOTES_BOOKMARKS_SYNC", "").lower() == "passed":
+        return True
+    return report_passed("notes-bookmarks-sync-audit.json")
+
+
+def learning_progress_sync_passed() -> bool:
+    if os.getenv("MORPHORA_LEARNING_PROGRESS_SYNC", "").lower() == "passed":
+        return True
+    return report_passed("learning-progress-sync-audit.json")
+
+
+def sync_ux_passed() -> bool:
+    if os.getenv("MORPHORA_SYNC_UX", "").lower() == "passed":
+        return True
+    return report_passed("sync-ux-audit.json")
+
+
+def final_hardening_passed() -> bool:
+    if os.getenv("MORPHORA_FINAL_HARDENING", "").lower() == "passed":
+        return True
+    return report_passed("v5-final-hardening-audit.json")
+
+
 def quality_gate_passed() -> bool:
-    return validation_passed() and release_candidate_passed()
+    return validation_passed() and release_candidate_passed() and backend_foundation_passed() and authentication_passed() and profile_preferences_passed() and cloud_sync_foundation_passed() and notes_bookmarks_sync_passed() and learning_progress_sync_passed() and sync_ux_passed() and final_hardening_passed()
 
 
 def release_metadata(version: str) -> dict[str, Any]:
@@ -120,6 +177,22 @@ def release_metadata(version: str) -> dict[str, Any]:
         "builtAt": datetime.now(timezone.utc).isoformat(),
         "validation": "passed" if validation_passed() else "unverified",
         "releaseCandidate": "passed" if release_candidate_passed() else "unverified",
+        "backendFoundation": "passed" if backend_foundation_passed() else "unverified",
+        "backendFoundationVersion": 1,
+        "authentication": "passed" if authentication_passed() else "unverified",
+        "authenticationVersion": 1,
+        "profilePreferences": "passed" if profile_preferences_passed() else "unverified",
+        "profilePreferencesVersion": 1,
+        "cloudSyncFoundation": "passed" if cloud_sync_foundation_passed() else "unverified",
+        "cloudSyncFoundationVersion": 1,
+        "notesBookmarksSync": "passed" if notes_bookmarks_sync_passed() else "unverified",
+        "notesBookmarksSyncVersion": 1,
+        "learningProgressSync": "passed" if learning_progress_sync_passed() else "unverified",
+        "learningProgressSyncVersion": 1,
+        "syncUX": "passed" if sync_ux_passed() else "unverified",
+        "syncUXVersion": 1,
+        "finalHardening": "passed" if final_hardening_passed() else "unverified",
+        "finalHardeningVersion": 1,
         "repository": os.getenv("MORPHORA_REPOSITORY", ""),
         "runId": os.getenv("MORPHORA_RUN_ID", ""),
         "buildUrl": os.getenv("MORPHORA_BUILD_URL", ""),
@@ -160,7 +233,7 @@ def write_release_files(output: Path, release: dict[str, Any]) -> None:
 
 
 def patch_html_asset_versions(output: Path, version: str, asset_version: str) -> None:
-    for name in ("index.html", "studio.html", "dev-tools.html", "performance-lab.html"):
+    for name in ("index.html", "studio.html", "dev-tools.html", "performance-lab.html", "histology.html", "histology-poc.html"):
         path = output / name
         text = path.read_text(encoding="utf-8")
         text = text.replace(f"?v={version}", f"?v={asset_version}")
@@ -189,7 +262,7 @@ def main() -> int:
 
     version = semantic_version()
     if not quality_gate_passed() and not args.allow_unverified:
-        raise SystemExit("Release build blocked: run `npm run check` successfully first so project validation and the V4.9.8 release-candidate gate both pass.")
+        raise SystemExit("Release build blocked: run `npm run check` successfully first so validation, release-candidate, backend, authentication, profile/preferences, cloud sync, notes/bookmarks, Study/Quiz progress, Sync Center UX, and V5 final-hardening gates all pass.")
 
     output = args.output.resolve()
     release = release_metadata(version)
@@ -204,6 +277,14 @@ def main() -> int:
     print(f"Commit: {release['commit']}")
     print(f"Validation: {release['validation']}")
     print(f"Release candidate gate: {release['releaseCandidate']}")
+    print(f"Backend foundation gate: {release['backendFoundation']}")
+    print(f"Authentication gate: {release['authentication']}")
+    print(f"Profile/preferences gate: {release['profilePreferences']}")
+    print(f"Cloud sync foundation gate: {release['cloudSyncFoundation']}")
+    print(f"Notes/bookmarks sync gate: {release['notesBookmarksSync']}")
+    print(f"Study/Quiz progress sync gate: {release['learningProgressSync']}")
+    print(f"Sync Center UX gate: {release['syncUX']}")
+    print(f"V5 final hardening gate: {release['finalHardening']}")
     print(f"Files: {file_count}")
     print(f"Size: {byte_count / (1024 * 1024):.2f} MiB")
     return 0

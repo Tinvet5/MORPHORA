@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Authoritative MORPHORA V4.9.8 project validator.
+"""Authoritative MORPHORA V5.0.5 project validator.
 
 Validates schemas, content relationships, repository paths, images, Deep Zoom
 pyramids, identifiers, published-content readiness and runtime version consistency.
@@ -360,7 +360,7 @@ def validate_versions(root: Path, report: ValidationReport) -> None:
             report.error("VERSION_PAGE_MISSING", "Expected application page is missing.", html_name)
             continue
         text = path.read_text(encoding="utf-8")
-        stale = sorted(set(re.findall(r"\?v=(\d+(?:\.\d+){2,3})", text)) - {VALIDATOR_VERSION})
+        stale = sorted(set(re.findall(r"\?v=(\d+(?:\.\d+){2,4})", text)) - {VALIDATOR_VERSION})
         if stale:
             report.error("VERSION_ASSET_STALE", f"Page contains stale cache versions: {', '.join(stale)}.", html_name)
         release_pos = text.find("release-meta.js")

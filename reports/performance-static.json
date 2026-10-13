@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-02T23:49:24.986352+00:00",
+  "generatedAt": "2026-10-08T21:14:47.921710+00:00",
   "budgets": {
     "shellBytesWarning": 1600000,
     "singleJsBytesWarning": 400000,
@@ -9,7 +9,7 @@
     "tileBytesError": 1000000
   },
   "summary": {
-    "shellBytes": 567179,
+    "shellBytes": 646766,
     "thumbnailCount": 7,
     "thumbnailBytes": 182156,
     "fallbackImageCount": 5,
@@ -24,11 +24,11 @@
   "shell": [
     {
       "path": "index.html",
-      "bytes": 41467
+      "bytes": 58886
     },
     {
       "path": "style.css",
-      "bytes": 133139
+      "bytes": 156061
     },
     {
       "path": "design-system.css",
@@ -36,19 +36,47 @@
     },
     {
       "path": "app-config.js",
-      "bytes": 3114
+      "bytes": 3503
+    },
+    {
+      "path": "backend-config.js",
+      "bytes": 1121
     },
     {
       "path": "models.js",
-      "bytes": 21204
+      "bytes": 21423
     },
     {
       "path": "storage.js",
-      "bytes": 15372
+      "bytes": 20885
+    },
+    {
+      "path": "backend/supabase-loader.js",
+      "bytes": 3083
+    },
+    {
+      "path": "backend/backend-client.js",
+      "bytes": 2543
+    },
+    {
+      "path": "backend/auth-service.js",
+      "bytes": 5468
+    },
+    {
+      "path": "backend/profile-service.js",
+      "bytes": 2511
+    },
+    {
+      "path": "backend/sync-service.js",
+      "bytes": 8156
+    },
+    {
+      "path": "backend/data-service.js",
+      "bytes": 1707
     },
     {
       "path": "performance.js",
-      "bytes": 23566
+      "bytes": 24533
     },
     {
       "path": "accessibility.js",
@@ -56,19 +84,19 @@
     },
     {
       "path": "script.js",
-      "bytes": 102008
+      "bytes": 105458
     },
     {
       "path": "study.js",
-      "bytes": 79007
+      "bytes": 80662
     },
     {
       "path": "drawing.js",
-      "bytes": 33688
+      "bytes": 35167
     },
     {
       "path": "navigation.js",
-      "bytes": 68049
+      "bytes": 69034
     }
   ],
   "issues": []

@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     getViewerOptions() { return {}; }
   };
   Perf.mark("studio-dom-ready");
-  const APP_VERSION = Config.assetVersion || Config.version || "4.9.8-dev";
+  const APP_VERSION = Config.assetVersion || Config.version || "5.0.2-dev";
   const CATALOG_PATH = "data/catalog.json";
   const SUPPORTED_SCHEMA_VERSION = Config.schemaVersion || Models?.SCHEMA_VERSION || 2;
   const DRAFT_PREFIX = AppStorage?.keys.studioDraftPrefix || "morphora:studio:draft:";

@@ -32,11 +32,13 @@ const requiredKeys = [
   "notes.emptyTitle", "drawing.hintDraw", "study.noStructuresAvailable", "quiz.recommendRepeatTitle",
   "studio.saveDraft", "studio.translation", "library.searchTitle",
   "status.offline", "status.connectionRestored", "viewer.compatibleImage", "viewer.fallbackOpened",
-  "species.dataUnavailable", "species.libraryUnavailable", "theme.switchDark", "theme.switchLight"
+  "species.dataUnavailable", "species.libraryUnavailable", "theme.switchDark", "theme.switchLight",
+  "account.title", "account.signIn", "account.createAccount", "account.signOut", "account.privacyNote",
+  "bookmarks.title", "bookmarks.save", "bookmarks.cloudTitle", "notes.cloudTitle", "notes.offlineTitle"
 ];
 for (const key of requiredKeys) {
   for (const locale of locales) {
-    if (!dictionaries[locale][key]) throw new Error(`${locale} dictionary missing required V4.9.8 key: ${key}`);
+    if (!dictionaries[locale][key]) throw new Error(`${locale} dictionary missing required V5.0.5 key: ${key}`);
   }
 }
 const indexHtml = fs.readFileSync(path.join(root, "index.html"), "utf8");
@@ -64,7 +66,7 @@ for (const [source, forbidden] of [
   [performanceJs, 'element.textContent = offline\n      ? "You are offline.'],
   [styleCss, 'content: "Compatible image"']
 ]) {
-  if (source.includes(forbidden)) throw new Error(`V4.9.8 localization hardening regression: ${forbidden}`);
+  if (source.includes(forbidden)) throw new Error(`V5.0.5 localization hardening regression: ${forbidden}`);
 }
 
 console.log(`i18n checks passed: ${baseKeys.length} UI keys, ${labels} bilingual anatomical labels.`);

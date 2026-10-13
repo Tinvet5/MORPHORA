@@ -1,0 +1,9 @@
+MORPHORA Histology POC v0.2.1 — Visual Polish
+
+- Replaced the original CSS-generated Histology hero graphic with a cleaner, calmer H&E-inspired hero illustration.
+- Added the user-provided pink MORPHORA identity as transparent Histology-specific assets.
+- Added a pink MORPHORA wordmark to Histology menu and whole-slide viewer headers.
+- Added the pink MORPHORA emblem to Histology module markers, viewer empty state, and the main MORPHORA Histology entry.
+- Preserved the working PMA.start + OpenSeadragon whole-slide transport without functional changes.
+- Added the new Histology visual assets to the offline application shell.
+- Bumped the service-worker asset version to avoid stale cached v0.2 visuals.

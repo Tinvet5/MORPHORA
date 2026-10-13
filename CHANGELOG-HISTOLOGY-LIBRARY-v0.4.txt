@@ -1,0 +1,12 @@
+MORPHORA Histology Library v0.4 — Student Workspace
+
+- Rebuilt whole-slide sidebar around student learning tasks.
+- Moved PMA.start/source/metadata/slide-label controls to Developer panel.
+- Added auto-connect attempt for authorized local PMA.start sessions.
+- Added account-scoped local slide notes.
+- Added account-scoped local slide bookmarks.
+- Added normalized slide-coordinate drawing layer (pen/highlighter/eraser/undo/clear).
+- Added structure list/search and point/polygon overlay renderer foundation.
+- Added learning progress shell and Study/Quiz placeholders for authored content.
+- Preserved all six v0.3 slide manifests and shared dynamic viewer architecture.
+- Bumped Histology asset/cache identity to v0.4.

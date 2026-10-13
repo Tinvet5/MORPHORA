@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Shared validation primitives for MORPHORA V4.9.8."""
+"""Shared validation primitives for MORPHORA V5.0.5."""
 
 from __future__ import annotations
 
@@ -10,7 +10,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
-VALIDATOR_VERSION = "4.9.8"
+VALIDATOR_VERSION = "5.0.5"
 ID_RE = re.compile(r"^[a-z0-9]+(?:-[a-z0-9]+)*$")
 SAFE_PATH_RE = re.compile(r"^[A-Za-z0-9._\-/]+$")
 CONTENT_STATUSES = {"draft", "review", "published", "unpublished"}

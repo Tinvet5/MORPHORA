@@ -1,0 +1,355 @@
+<!doctype html>
+<html lang="en" data-theme="dark" data-module="histology">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
+  <meta name="theme-color" content="#170c17" />
+  <title>MORPHORA Histology — Cloud Sync & Study</title>
+  <link rel="icon" type="image/svg+xml" href="assets/branding/morphora-icon-primary.svg" />
+  <link rel="stylesheet" href="histology/histology-poc.css?v=5.0.5-h082" />
+  <script defer src="release-meta.js?v=5.0.5"></script>
+  <script defer src="app-config.js?v=5.0.5"></script>
+  <script defer src="models.js?v=5.0.5"></script>
+  <script defer src="storage.js?v=5.0.5"></script>
+  <script defer src="backend-config.js?v=5.0.5"></script>
+  <script defer src="backend/supabase-loader.js?v=5.0.5"></script>
+  <script defer src="backend/backend-client.js?v=5.0.5"></script>
+  <script defer src="backend/auth-service.js?v=5.0.5"></script>
+  <script defer src="backend/local-vault.js?v=5.0.5"></script>
+  <script defer src="backend/sync-service.js?v=5.0.5"></script>
+  <script defer src="backend/cloud-sync-engine.js?v=5.0.5"></script>
+  <script defer src="backend/histology-sync-service.js?v=5.0.5-h082"></script>
+  <script defer src="histology/histology-source-provider.js?v=5.0.5-h083"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/openseadragon/4.1.1/openseadragon.min.js"></script>
+  <script defer src="histology/histology-poc.js?v=5.0.5-h083"></script>
+</head>
+<body>
+  <div class="histology-shell">
+    <header class="histology-header">
+      <a class="histology-product-lockup" href="histology.html" aria-label="Histology library">
+        <span class="module-mark" aria-hidden="true"><img src="assets/histology/morphora-histology-icon.png" alt="" /></span>
+        <div>
+          <span class="product-kicker" data-copy="moduleKicker">Microscopic atlas</span>
+          <strong><span data-copy="moduleName">Histology</span> <span class="version-badge">Library v0.8.3</span></strong>
+        </div>
+      </a>
+      <div class="header-actions">
+        <span class="connection-pill" id="connectionPill" data-state="idle"><span class="status-dot"></span><span id="connectionPillText">Ready</span></span>
+        <button class="cloud-sync-pill" id="histologyCloudButton" type="button" data-state="local" title="Histology cloud sync"><span class="cloud-sync-dot" aria-hidden="true"></span><span id="histologyCloudText">Guest · Local</span></button>
+        <button class="icon-button language-toggle" id="languageToggle" type="button" aria-label="Change language"><span aria-hidden="true">◎</span><strong id="languageCode">EN</strong></button>
+        <button class="icon-button" id="themeToggle" type="button" aria-label="Toggle theme" title="Toggle theme"><span id="themeIcon" aria-hidden="true">☾</span></button>
+        <button class="icon-button developer-button" id="developerButton" type="button" aria-label="Open developer panel" title="Developer / local slide setup">⚙</button>
+        <a class="header-back-link" href="histology.html"><span data-copy="library">Library</span><span aria-hidden="true">→</span></a>
+      </div>
+    </header>
+
+    <main class="histology-main">
+      <aside class="histology-sidebar" aria-label="Histology learning workspace">
+        <section class="sidebar-intro">
+          <div class="case-badges"><span class="case-badge pathology" id="categoryBadge">Histopathology</span><span class="case-badge stain" id="stainBadge">H&amp;E</span></div>
+          <p class="eyebrow" id="speciesSystemLine">Equine · Lymphatic system</p>
+          <h1 id="slideTitle">Equine abscessed lymph node</h1>
+          <p class="slide-subtitle" id="slideSubtitle">H&amp;E-stained digital histopathology slide</p>
+          <div class="case-quickfacts" aria-label="Specimen summary">
+            <span id="organQuickFact">Lymph node</span>
+            <span id="speciesQuickFact">Equine</span>
+          </div>
+        </section>
+
+        <section class="student-connect" id="studentConnectCard">
+          <div>
+            <span class="student-connect-icon" aria-hidden="true">◉</span>
+            <div><strong id="studentConnectTitle" data-copy="openSlideTitle">Open digital slide</strong><p id="studentConnectBody" data-copy="openSlideBody">Stream this specimen from the local microscopy source.</p></div>
+          </div>
+          <button class="primary-button" id="connectButton" type="button" data-copy="openSlide">Open slide</button>
+          <button class="text-button setup-link" id="setupButton" type="button" data-copy="localSetup">Local setup</button>
+        </section>
+
+        <section class="learning-section" aria-labelledby="learningActionsTitle">
+          <div class="section-label-row"><div><p class="section-kicker" data-copy="learnEyebrow">Learn</p><h2 id="learningActionsTitle" data-copy="learningActions">Learning modes</h2></div><span class="tiny-chip" id="structureReadyChip">0 structures</span></div>
+          <div class="learning-actions">
+            <button class="learning-button" id="studyButton" type="button" disabled><span class="learning-icon" aria-hidden="true">◫</span><span><strong data-copy="study">Study</strong><small id="studyButtonStatus" data-copy="needsStructures">Needs structures</small></span></button>
+            <button class="learning-button" id="quizButton" type="button" disabled><span class="learning-icon" aria-hidden="true">?</span><span><strong data-copy="quiz">Quiz</strong><small id="quizButtonStatus" data-copy="needsStructures">Needs structures</small></span></button>
+          </div>
+        </section>
+
+        <section class="tools-section" aria-labelledby="toolsTitle">
+          <div class="section-label-row"><div><p class="section-kicker" data-copy="workspaceEyebrow">Workspace</p><h2 id="toolsTitle" data-copy="studentTools">Student tools</h2></div></div>
+          <div class="student-tools">
+            <button class="tool-button" id="notesButton" type="button"><span aria-hidden="true">▤</span><strong data-copy="notes">Notes</strong><small id="notesStatus">Empty</small></button>
+            <button class="tool-button" id="drawButton" type="button"><span aria-hidden="true">✎</span><strong data-copy="draw">Draw</strong><small id="drawingStatus">0 strokes</small></button>
+            <button class="tool-button" id="personalLabelsButton" type="button"><span aria-hidden="true">◉</span><strong data-copy="personalLabels">My labels</strong><small id="personalLabelsStatus">0 labels</small></button>
+            <button class="tool-button" id="bookmarkButton" type="button" aria-pressed="false"><span id="bookmarkIcon" aria-hidden="true">☆</span><strong data-copy="bookmark">Bookmark</strong><small id="bookmarkStatus">Save slide</small></button>
+          </div>
+        </section>
+
+        <section class="structures-section" aria-labelledby="structuresTitle">
+          <div class="section-label-row"><div><p class="section-kicker" data-copy="contentEyebrow">Content</p><h2 id="structuresTitle" data-copy="structures">Structures</h2></div><div class="visibility-pair"><button class="visibility-toggle is-on" id="structuresVisibilityButton" type="button" aria-pressed="true" data-copy="official">Official</button><button class="visibility-toggle is-on personal-visibility" id="personalVisibilityButton" type="button" aria-pressed="true" data-copy="mine">Mine</button></div></div>
+          <div class="structure-layer-tabs" role="tablist" aria-label="Structure layers"><button class="structure-layer-tab is-active" id="officialStructuresTab" type="button" role="tab" aria-selected="true" data-layer="official"><span aria-hidden="true">✓</span><span data-copy="official">Official</span></button><button class="structure-layer-tab" id="personalStructuresTab" type="button" role="tab" aria-selected="false" data-layer="personal"><span aria-hidden="true">✎</span><span data-copy="mine">Mine</span><span class="mini-count" id="personalLayerCount">0</span></button></div>
+          <label class="structure-search"><span aria-hidden="true">⌕</span><input id="structureSearch" type="search" autocomplete="off" data-placeholder="structureSearch" placeholder="Search structures…" /></label>
+          <div class="structure-list" id="structureList">
+            <div class="structure-empty" id="structureEmpty"><span aria-hidden="true">◎</span><strong data-copy="noStructuresTitle">No structures added yet.</strong><p data-copy="noStructuresBody">This slide is ready for labels when Histology Studio authoring begins.</p></div>
+          </div>
+        </section>
+
+        <section class="progress-section" aria-labelledby="progressTitle">
+          <div class="section-label-row"><div><p class="section-kicker" data-copy="progressEyebrow">Progress</p><h2 id="progressTitle" data-copy="learningProgress">Learning progress</h2></div><strong id="progressValue">0%</strong></div>
+          <div class="progress-track"><span id="progressBar"></span></div>
+          <p class="progress-copy" id="progressCopy">0 / 0 structures studied</p>
+          <div class="progress-stats" aria-label="Learning statistics">
+            <div><span data-copy="known">Known</span><strong id="knownCountValue">0</strong></div>
+            <div><span data-copy="learning">Learning</span><strong id="learningCountValue">0</strong></div>
+            <div><span data-copy="quizAccuracy">Quiz</span><strong id="quizAccuracyValue">—</strong></div>
+            <div><span data-copy="locateAccuracy">Locate</span><strong id="locateAccuracyValue">—</strong></div>
+          </div>
+        </section>
+      </aside>
+
+      <section class="viewer-column">
+        <div class="viewer-topbar">
+          <div class="viewer-title-wrap"><span class="live-indicator"><span></span>WSI</span><strong id="viewerSlideName">Digital slide</strong></div>
+          <div class="viewer-readouts" aria-live="polite">
+            <span><small data-copy="magnification">Magnification</small><strong id="magnificationReadout">—</strong></span>
+            <span><small data-copy="resolution">Resolution</small><strong id="resolutionReadout">—</strong></span>
+            <span><small data-copy="position">Position</small><strong id="positionReadout">—</strong></span>
+          </div>
+        </div>
+
+        <div class="viewer-stage" id="viewerStage">
+          <div class="viewer-empty" id="viewerEmpty">
+            <div class="viewer-empty-mark" aria-hidden="true"><img src="assets/histology/morphora-histology-icon.png" alt="" /></div>
+            <p class="eyebrow">MORPHORA Histology</p>
+            <h2 data-copy="readyTitle">Ready for whole-slide microscopy.</h2>
+            <p data-copy="readyBody">Open the slide to explore from tissue architecture to cellular detail.</p>
+            <button class="primary-button" id="emptyConnectButton" type="button" data-copy="openSlide">Open slide</button>
+          </div>
+          <div id="histologyViewer" class="histology-viewer" aria-label="Whole-slide histology viewer"></div>
+          <svg class="structure-overlay" id="structureOverlay" aria-hidden="true"></svg>
+          <svg class="personal-annotation-overlay" id="personalAnnotationOverlay" aria-hidden="true"></svg>
+          <canvas class="drawing-overlay" id="drawingCanvas" aria-label="Personal drawing layer"></canvas>
+          <svg class="personal-draft-overlay" id="personalDraftOverlay" aria-hidden="true"></svg>
+          <div class="personal-interaction-layer" id="personalInteractionLayer" aria-hidden="true"></div>
+          <svg class="studio-draft-overlay" id="studioDraftOverlay" aria-hidden="true"></svg>
+          <div class="studio-interaction-layer" id="studioInteractionLayer" aria-hidden="true"></div>
+          <svg class="learning-target-overlay" id="learningTargetOverlay" aria-hidden="true"></svg>
+          <div class="learning-session-panel" id="learningSessionPanel" hidden aria-live="polite">
+            <div class="learning-session-head"><div><span class="learning-session-kicker" id="learningSessionKicker">STUDY</span><strong id="learningSessionTitle">Active recall</strong></div><span class="learning-session-counter" id="learningSessionCounter">1 / 1</span></div>
+            <p class="learning-session-prompt" id="learningSessionPrompt">What structure is highlighted?</p>
+            <div class="learning-session-answer" id="learningSessionAnswer" hidden><span class="learning-source-badge" id="learningAnswerSource">MORPHORA Official</span><strong id="learningAnswerName">—</strong><p id="learningAnswerDescription"></p></div>
+            <div class="quiz-answer-grid" id="learningAnswers" hidden></div>
+            <div class="learning-feedback" id="learningFeedback" hidden></div>
+            <div class="learning-session-actions">
+              <button class="secondary-button compact" id="learningExitButton" type="button" data-copy="exitLearning">Exit</button>
+              <button class="secondary-button compact" id="learningRevealButton" type="button" data-copy="reveal">Reveal</button>
+              <button class="secondary-button compact" id="learningMarkLearningButton" type="button" data-copy="markLearning" hidden>Learning</button>
+              <button class="primary-button compact" id="learningMarkKnownButton" type="button" data-copy="markKnown" hidden>Known</button>
+              <button class="primary-button compact" id="learningNextButton" type="button" data-copy="next" hidden>Next</button>
+            </div>
+          </div>
+          <div class="personal-mode-bar" id="personalModeBar" hidden>
+            <div><span class="personal-mode-kicker" data-copy="personalAuthoring">Personal labeling</span><strong id="personalModeTitle">Point label</strong><p id="personalModePrompt">Click the microscopic feature to place your label.</p></div>
+            <div class="studio-mode-actions"><button class="secondary-button compact" id="personalCancelModeButton" type="button" data-copy="cancel">Cancel</button><button class="primary-button compact" id="personalFinishRegionButton" type="button" data-copy="finishRegion" hidden>Finish region</button></div>
+          </div>
+          <div class="studio-mode-bar" id="studioModeBar" hidden>
+            <div><span class="studio-mode-kicker" data-copy="studioMode">Authoring</span><strong id="studioModeTitle">Point structure</strong><p id="studioModePrompt">Click the microscopic structure to place the point.</p></div>
+            <div class="studio-mode-actions"><button class="secondary-button compact" id="studioCancelModeButton" type="button" data-copy="cancel">Cancel</button><button class="primary-button compact" id="studioFinishRegionButton" type="button" data-copy="finishRegion" hidden>Finish region</button></div>
+          </div>
+          <div class="viewer-error" id="viewerError" hidden role="alert"><strong id="viewerErrorTitle">Unable to open slide</strong><p id="viewerErrorBody"></p><div class="error-actions"><button class="secondary-button compact" id="errorSetupButton" type="button" data-copy="openSetup">Open setup</button><button class="secondary-button compact" id="errorRetryButton" type="button" data-copy="retry">Retry</button></div></div>
+          <div class="scale-overlay" id="scaleOverlay" hidden><div class="scale-line" id="scaleLine"></div><span id="scaleLabel">—</span></div>
+          <div class="slide-watermark" aria-hidden="true">MORPHORA · HISTOLOGY</div>
+        </div>
+
+        <div class="viewer-toolbar" id="viewerToolbar" aria-label="Histology navigation controls">
+          <div class="toolbar-group objective-group" id="objectiveGroup" aria-label="Magnification presets"></div>
+          <div class="toolbar-separator" aria-hidden="true"></div>
+          <div class="toolbar-group"><button type="button" id="zoomOutButton" title="Zoom out" aria-label="Zoom out">−</button><button type="button" id="homeButton" title="Reset view" data-copy="overview">Overview</button><button type="button" id="zoomInButton" title="Zoom in" aria-label="Zoom in">+</button></div>
+          <div class="toolbar-separator" aria-hidden="true"></div>
+          <button class="toolbar-toggle is-on" type="button" id="toolbarStructuresButton" aria-pressed="true"><span data-copy="structures">Structures</span><span class="count-pill" id="structureCountBadge">0</span></button>
+          <div class="toolbar-spacer"></div>
+          <span class="toolbar-note" id="toolbarNote">Whole-slide image</span>
+          <button class="fullscreen-button" type="button" id="fullscreenButton" data-copy="fullscreen">Fullscreen</button>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <aside class="tool-drawer learning-setup-drawer" id="studyDrawer" hidden aria-labelledby="studyDrawerTitle">
+    <div class="drawer-head"><div><p class="section-kicker" data-copy="learnEyebrow">Learn</p><h2 id="studyDrawerTitle" data-copy="studyMode">Study mode</h2></div><button class="drawer-close" type="button" data-close-drawer aria-label="Close">×</button></div>
+    <p class="drawer-description" data-copy="studySetupHelp">Practice active recall one structure at a time. Reveal the answer, then mark it as Learning or Known.</p>
+    <div class="learning-source-note"><span>✓</span><p><strong data-copy="contentSource">Study content</strong><span data-copy="sourceDistinction">Official MORPHORA content and personal labels remain clearly separated.</span></p></div>
+    <div class="learning-source-grid" id="studySourceGrid">
+      <button class="learning-source-option is-active" id="studySourceOfficial" type="button" data-study-source="official"><span>✓</span><strong data-copy="morphoraOfficial">MORPHORA Official</strong><small id="studyOfficialCount">0</small></button>
+      <button class="learning-source-option" id="studySourcePersonal" type="button" data-study-source="personal"><span>✎</span><strong data-copy="myLabels">My Labels</strong><small id="studyPersonalCount">0</small></button>
+      <button class="learning-source-option" id="studySourceBoth" type="button" data-study-source="both"><span>◎</span><strong data-copy="bothSources">Both</strong><small id="studyBothCount">0</small></button>
+    </div>
+    <div class="learning-config-summary" id="studyConfigSummary">—</div>
+    <button class="primary-button learning-start-button" id="startStudyButton" type="button" data-copy="startStudy">Start study</button>
+  </aside>
+
+  <aside class="tool-drawer learning-setup-drawer" id="quizDrawer" hidden aria-labelledby="quizDrawerTitle">
+    <div class="drawer-head"><div><p class="section-kicker" data-copy="learnEyebrow">Learn</p><h2 id="quizDrawerTitle" data-copy="quizMode">Quiz mode</h2></div><button class="drawer-close" type="button" data-close-drawer aria-label="Close">×</button></div>
+    <p class="drawer-description" data-copy="quizSetupHelp">Create a short quiz from official structures, your personal labels, or both.</p>
+    <div class="learning-source-grid">
+      <button class="learning-source-option is-active" id="quizSourceOfficial" type="button" data-quiz-source="official"><span>✓</span><strong data-copy="morphoraOfficial">MORPHORA Official</strong><small id="quizOfficialCount">0</small></button>
+      <button class="learning-source-option" id="quizSourcePersonal" type="button" data-quiz-source="personal"><span>✎</span><strong data-copy="myLabels">My Labels</strong><small id="quizPersonalCount">0</small></button>
+      <button class="learning-source-option" id="quizSourceBoth" type="button" data-quiz-source="both"><span>◎</span><strong data-copy="bothSources">Both</strong><small id="quizBothCount">0</small></button>
+    </div>
+    <div class="quiz-mode-label" data-copy="questionType">Question type</div>
+    <div class="quiz-mode-grid">
+      <button class="quiz-mode-option is-active" id="quizModeMixed" type="button" data-quiz-mode="mixed"><strong data-copy="mixed">Mixed</strong><small data-copy="mixedHelp">Multiple choice + locate</small></button>
+      <button class="quiz-mode-option" id="quizModeMultiple" type="button" data-quiz-mode="multiple"><strong data-copy="multipleChoice">Multiple choice</strong><small data-copy="multipleChoiceHelp">Identify the highlighted structure</small></button>
+      <button class="quiz-mode-option" id="quizModeLocate" type="button" data-quiz-mode="locate"><strong data-copy="locate">Locate</strong><small data-copy="locateHelp">Find the structure on the slide</small></button>
+    </div>
+    <label class="quiz-length-row"><span data-copy="questionCount">Questions</span><select id="quizLengthSelect"><option value="5">5</option><option value="10">10</option><option value="all" data-copy="allAvailable">All available</option></select></label>
+    <div class="learning-source-note personal-practice-note" id="personalPracticeNote"><span>✎</span><p><strong data-copy="personalPractice">Personal practice</strong><span data-copy="personalPracticeHelp">Scores using My Labels are personal study results, not validated MORPHORA assessment.</span></p></div>
+    <div class="learning-config-summary" id="quizConfigSummary">—</div>
+    <button class="primary-button learning-start-button" id="startQuizButton" type="button" data-copy="startQuiz">Start quiz</button>
+  </aside>
+
+  <aside class="tool-drawer" id="notesDrawer" hidden aria-labelledby="notesDrawerTitle">
+    <div class="drawer-head"><div><p class="section-kicker" data-copy="workspaceEyebrow">Workspace</p><h2 id="notesDrawerTitle" data-copy="slideNotes">Slide notes</h2></div><button class="drawer-close" type="button" data-close-drawer aria-label="Close">×</button></div>
+    <p class="drawer-description" data-copy="notesHelp">Keep a personal note for this slide. It stays on this device and is separated by MORPHORA account.</p>
+    <textarea class="notes-editor" id="notesEditor" rows="12" data-placeholder="notesPlaceholder" placeholder="Write your observations…"></textarea>
+    <div class="drawer-footer"><span id="notesSavedAt">Not saved yet</span><button class="primary-button compact" id="saveNotesButton" type="button" data-copy="saveNotes">Save notes</button></div>
+  </aside>
+
+  <aside class="tool-drawer drawing-drawer" id="drawingDrawer" hidden aria-labelledby="drawingDrawerTitle">
+    <div class="drawer-head"><div><p class="section-kicker" data-copy="workspaceEyebrow">Workspace</p><h2 id="drawingDrawerTitle" data-copy="drawingTools">Drawing tools</h2></div><button class="drawer-close" type="button" data-close-drawer aria-label="Close">×</button></div>
+    <p class="drawer-description" data-copy="drawingHelp">Draw directly over the microscopic field. Strokes remain anchored to the slide as you zoom.</p>
+    <div class="drawing-tools" role="group" aria-label="Drawing tool">
+      <button class="draw-tool is-active" type="button" data-draw-tool="pen"><span aria-hidden="true">✎</span><span data-copy="pen">Pen</span></button>
+      <button class="draw-tool" type="button" data-draw-tool="highlighter"><span aria-hidden="true">▰</span><span data-copy="highlighter">Highlighter</span></button>
+      <button class="draw-tool" type="button" data-draw-tool="eraser"><span aria-hidden="true">⌫</span><span data-copy="eraser">Eraser</span></button>
+    </div>
+    <div class="drawing-option"><label for="drawingColor" data-copy="color">Color</label><input id="drawingColor" type="color" value="#e879ae" /></div>
+    <div class="drawing-option"><label for="drawingSize" data-copy="size">Size</label><input id="drawingSize" type="range" min="2" max="18" step="1" value="5" /><output id="drawingSizeValue">5</output></div>
+    <div class="drawing-actions"><button class="secondary-button compact" id="drawingUndoButton" type="button" data-copy="undo">Undo</button><button class="secondary-button compact" id="drawingClearButton" type="button" data-copy="clear">Clear</button><button class="primary-button compact" id="drawingDoneButton" type="button" data-copy="done">Done</button></div>
+  </aside>
+
+  <aside class="tool-drawer personal-labels-drawer" id="personalLabelsDrawer" hidden aria-labelledby="personalLabelsDrawerTitle">
+    <div class="drawer-head"><div><p class="section-kicker" data-copy="workspaceEyebrow">Workspace</p><h2 id="personalLabelsDrawerTitle" data-copy="personalLabels">My labels</h2></div><button class="drawer-close" type="button" data-close-drawer aria-label="Close">×</button></div>
+    <p class="drawer-description" data-copy="personalLabelsHelp">Create your own color-coded labels and zones for studying or teaching. These annotations are private and separate from official MORPHORA content.</p>
+    <div class="personal-author-actions"><button class="personal-author-button" id="personalAddPointButton" type="button"><span aria-hidden="true">＋</span><strong data-copy="personalPoint">Point label</strong><small data-copy="personalPointHelp">Mark one cell or microscopic feature</small></button><button class="personal-author-button" id="personalAddRegionButton" type="button"><span aria-hidden="true">⬡</span><strong data-copy="personalRegion">Color zone</strong><small data-copy="personalRegionHelp">Outline a region for color-coded study</small></button></div>
+    <div class="personal-layer-note"><span aria-hidden="true">✎</span><p><strong data-copy="personalLayerTitle">Personal layer</strong><span data-copy="personalLayerBody">Only you see these labels on this device/account workspace. Official MORPHORA labels remain unchanged.</span></p></div>
+    <div class="personal-manager-list" id="personalManagerList"><div class="studio-list-empty" id="personalManagerEmpty" data-copy="noPersonalLabels">No personal labels yet.</div></div>
+  </aside>
+
+  <aside class="tool-drawer personal-editor-drawer" id="personalEditorDrawer" hidden aria-labelledby="personalEditorTitle">
+    <div class="drawer-head"><div><p class="section-kicker" data-copy="personalAuthoring">Personal labeling</p><h2 id="personalEditorTitle" data-copy="editPersonalLabel">Edit personal label</h2></div><button class="drawer-close" type="button" data-close-drawer aria-label="Close">×</button></div>
+    <p class="drawer-description" data-copy="personalEditorHelp">Name your label, choose a color, and optionally add a study note.</p>
+    <div class="personal-editor-grid">
+      <label class="studio-field"><span data-copy="labelName">Label name</span><input id="personalTitleInput" type="text" data-placeholder="labelNamePlaceholder" placeholder="e.g. inflammatory focus" /></label>
+      <label class="studio-field"><span data-copy="category">Category</span><input id="personalCategoryInput" type="text" data-placeholder="personalCategoryPlaceholder" placeholder="Optional group" /></label>
+      <label class="studio-field studio-field-wide"><span data-copy="personalNote">Study note</span><textarea id="personalNoteInput" rows="4" data-placeholder="personalNotePlaceholder" placeholder="Optional observation or teaching note…"></textarea></label>
+    </div>
+    <div class="personal-style-card">
+      <div class="personal-style-head"><div><span data-copy="labelColor">Label color</span><strong id="personalColorValue">#e879ae</strong></div><input id="personalColorInput" type="color" value="#e879ae" aria-label="Personal label color" /></div>
+      <div class="color-palette" id="personalColorPalette" role="group" aria-label="Preset label colors">
+        <button type="button" data-annotation-color="#e879ae" style="--swatch:#e879ae" aria-label="Pink"></button><button type="button" data-annotation-color="#a78bfa" style="--swatch:#a78bfa" aria-label="Purple"></button><button type="button" data-annotation-color="#60a5fa" style="--swatch:#60a5fa" aria-label="Blue"></button><button type="button" data-annotation-color="#2dd4bf" style="--swatch:#2dd4bf" aria-label="Teal"></button><button type="button" data-annotation-color="#34d399" style="--swatch:#34d399" aria-label="Green"></button><button type="button" data-annotation-color="#facc15" style="--swatch:#facc15" aria-label="Yellow"></button><button type="button" data-annotation-color="#fb923c" style="--swatch:#fb923c" aria-label="Orange"></button><button type="button" data-annotation-color="#f87171" style="--swatch:#f87171" aria-label="Red"></button>
+      </div>
+      <label class="personal-opacity-row" id="personalOpacityRow"><span data-copy="zoneOpacity">Zone opacity</span><input id="personalOpacityInput" type="range" min="8" max="55" step="1" value="20" /><output id="personalOpacityValue">20%</output></label>
+    </div>
+    <div class="studio-geometry-card"><span data-copy="geometry">Geometry</span><strong id="personalGeometrySummary">—</strong><button class="secondary-button compact" id="personalRepositionButton" type="button" data-copy="movePoint">Move point</button></div>
+    <div class="studio-editor-actions"><button class="danger-button compact" id="deletePersonalButton" type="button" data-copy="deletePersonal">Delete</button><div class="studio-editor-spacer"></div><button class="secondary-button compact" id="cancelPersonalEditButton" type="button" data-copy="cancel">Cancel</button><button class="primary-button compact" id="savePersonalButton" type="button" data-copy="savePersonal">Save label</button></div>
+  </aside>
+
+  <aside class="tool-drawer studio-editor-drawer" id="structureEditorDrawer" hidden aria-labelledby="structureEditorTitle">
+    <div class="drawer-head"><div><p class="section-kicker" data-copy="authoringEyebrow">Content authoring</p><h2 id="structureEditorTitle" data-copy="editStructure">Edit structure</h2></div><button class="drawer-close" type="button" data-close-drawer aria-label="Close">×</button></div>
+    <p class="drawer-description" data-copy="structureEditorHelp">Add bilingual educational content, then save it to the local Studio draft.</p>
+    <div class="studio-editor-grid">
+      <label class="studio-field"><span data-copy="structureId">Structure ID</span><input id="structureIdInput" type="text" spellcheck="false" /></label>
+      <label class="studio-field"><span data-copy="category">Category</span><input id="structureCategoryInput" type="text" data-placeholder="categoryPlaceholder" placeholder="e.g. cortex, trabecula, lesion" /></label>
+      <label class="studio-field"><span data-copy="nameEnglish">Name · English</span><input id="structureNameEnInput" type="text" /></label>
+      <label class="studio-field"><span data-copy="nameSpanish">Name · Spanish</span><input id="structureNameEsInput" type="text" /></label>
+      <label class="studio-field studio-field-wide"><span data-copy="descriptionEnglish">Description · English</span><textarea id="structureDescriptionEnInput" rows="4"></textarea></label>
+      <label class="studio-field studio-field-wide"><span data-copy="descriptionSpanish">Description · Spanish</span><textarea id="structureDescriptionEsInput" rows="4"></textarea></label>
+    </div>
+    <div class="studio-geometry-card"><span data-copy="geometry">Geometry</span><strong id="structureGeometrySummary">—</strong><button class="secondary-button compact" id="studioRepositionButton" type="button">Move point</button></div>
+    <div class="studio-editor-actions"><button class="danger-button compact" id="deleteStructureButton" type="button" data-copy="deleteStructure">Delete</button><div class="studio-editor-spacer"></div><button class="secondary-button compact" id="cancelStructureEditButton" type="button" data-copy="cancel">Cancel</button><button class="primary-button compact" id="saveStructureButton" type="button" data-copy="saveStructure">Save structure</button></div>
+  </aside>
+
+  <div class="drawer-backdrop" id="drawerBackdrop" hidden></div>
+
+  <aside class="developer-panel" id="developerPanel" hidden aria-labelledby="developerPanelTitle">
+    <div class="developer-head"><div><p class="section-kicker">MORPHORA · DEV</p><h2 id="developerPanelTitle" data-copy="studioTitle">Histology Studio</h2></div><button class="drawer-close" id="developerCloseButton" type="button" aria-label="Close">×</button></div>
+    <p class="developer-intro" data-copy="developerIntro">Author microscopic content and manage the local slide source without exposing technical controls to students.</p>
+
+    <section class="developer-section studio-authoring-section">
+      <div class="developer-section-head"><div><span class="developer-eyebrow" data-copy="authoringEyebrow">Content authoring</span><strong data-copy="studioTitle">Histology Studio</strong></div><span class="tiny-chip">v0.8.2</span></div>
+      <p data-copy="studioIntro">Create microscopic point labels and polygon regions directly on the whole-slide image. Changes remain local until you export the slide manifest.</p>
+      <div class="studio-authoring-actions"><button class="studio-author-button" id="studioAddPointButton" type="button"><span aria-hidden="true">＋</span><strong data-copy="pointStructure">Point structure</strong><small data-copy="pointStructureHelp">Place one precise microscopic location</small></button><button class="studio-author-button" id="studioAddRegionButton" type="button"><span aria-hidden="true">⬡</span><strong data-copy="regionStructure">Region structure</strong><small data-copy="regionStructureHelp">Outline a tissue region with a polygon</small></button></div>
+      <div class="studio-draft-summary"><div><span data-copy="studioDraft">Studio draft</span><strong id="studioDraftStatus">0 structures</strong></div><span class="dev-status" id="studioDraftBadge" data-state="idle" data-copy="localDraft">Local draft</span></div>
+      <div class="studio-structure-list" id="studioStructureList"><div class="studio-list-empty" id="studioListEmpty" data-copy="noDraftStructures">No authored structures yet.</div></div>
+      <div class="developer-actions studio-export-actions"><button class="primary-button compact" id="exportManifestButton" type="button" data-copy="exportJson">Export JSON</button><button class="secondary-button compact" id="resetStudioDraftButton" type="button" data-copy="resetDraft">Reset draft</button></div>
+    </section>
+
+    <section class="developer-section">
+      <div class="developer-section-head"><div><span class="developer-eyebrow" data-copy="connectionHeading">Slide connection</span><strong id="connectionTitle">PMA.start</strong></div><span class="dev-status" id="developerStatus">Idle</span></div>
+      <p id="connectionBody">PMA.start must be running locally.</p>
+      <div class="developer-actions"><button class="primary-button compact" id="developerConnectButton" type="button" data-copy="connectSlide">Connect slide</button><button class="secondary-button compact" id="authorizeButton" type="button" data-copy="authorizeBrowser">Authorize browser</button></div>
+    </section>
+
+    <section class="developer-section hosted-delivery-section">
+      <div class="developer-section-head"><div><span class="developer-eyebrow" data-copy="deliveryEyebrow">Delivery</span><strong data-copy="deliveryHeading">Whole-slide source</strong></div><span class="dev-status" id="activeProviderValue">Auto</span></div>
+      <p data-copy="deliveryHelp">Auto prefers a hosted DZI slide and falls back to PMA.start while migration is in progress.</p>
+      <label class="developer-field"><span data-copy="sourceMode">Source mode</span><select id="sourceModeInput"><option value="auto" data-copy="sourceAuto">Auto · hosted first</option><option value="hosted" data-copy="sourceHosted">Hosted DZI only</option><option value="local" data-copy="sourceLocal">PMA.start only</option></select></label>
+      <label class="developer-field"><span data-copy="hostedDescriptor">Hosted DZI descriptor</span><input id="hostedUrlInput" type="url" spellcheck="false" placeholder="https://tiles.morphora.cl/histology/slide-id/slide.dzi" /></label>
+      <div class="source-route" id="sourceRoutePreview">Hosted DZI → PMA.start fallback</div>
+      <div class="hosted-pilot-card">
+        <div class="hosted-pilot-head">
+          <div><span class="developer-eyebrow" data-copy="pilotEyebrow">Pilot migration</span><strong data-copy="pilotTitle">Hosted source check</strong></div>
+          <span class="dev-status" id="hostedCheckStatus" data-state="idle" data-copy="pilotUnchecked">Not checked</span>
+        </div>
+        <p data-copy="pilotHelp">Validate the DZI descriptor, exact slide dimensions and a real tile before switching away from PMA.start.</p>
+        <code class="pilot-url-preview" id="pilotUrlPreview">http://127.0.0.1:8008/slide-id/slide.dzi</code>
+        <div class="hosted-check-details" id="hostedCheckDetails" data-copy="pilotReadyHint">Generate or serve the DZI pyramid, then run the check.</div>
+        <div class="developer-actions hosted-pilot-actions">
+          <button class="primary-button compact" id="hostedCheckButton" type="button" data-copy="runHostedCheck">Run hosted check</button>
+          <button class="secondary-button compact" id="localPilotButton" type="button" data-copy="useLocalPilot">Use local DZI pilot</button>
+          <button class="secondary-button compact" id="restoreAutoButton" type="button" data-copy="restoreAuto">Restore Auto</button>
+        </div>
+      </div>
+      <div class="hosted-pilot-card pma-export-card">
+        <div class="hosted-pilot-head">
+          <div><span class="developer-eyebrow" data-copy="pmaExportEyebrow">MDSX ingestion</span><strong data-copy="pmaExportTitle">PMA → DZI export</strong></div>
+          <span class="dev-status" data-state="ready">v0.8.2</span>
+        </div>
+        <p data-copy="pmaExportHelp">Use PMA.start once on the developer computer to create a standalone static DZI pyramid. Students never need PMA.start.</p>
+        <code class="pilot-url-preview pma-export-command" id="pmaExportCommandPreview">python tools\histology_wsi\export_from_pma.py --slide-id hueso-4 --serve</code>
+        <div class="developer-actions hosted-pilot-actions">
+          <button class="secondary-button compact" id="pmaExportCopyButton" type="button" data-copy="copyExportCommand">Copy export command</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="developer-section">
+      <div class="developer-section-head"><div><span class="developer-eyebrow" data-copy="localFallbackEyebrow">Local fallback</span><strong>PMA.start</strong></div></div>
+      <label class="developer-field"><span>PMA.start URL</span><input id="serverInput" type="url" spellcheck="false" /></label>
+      <label class="developer-field"><span data-copy="slidePath">Slide path</span><textarea id="slidePathInput" rows="3" spellcheck="false"></textarea></label>
+      <div class="developer-actions"><button class="primary-button compact" id="saveSourceButton" type="button" data-copy="saveReconnect">Save & reconnect</button><button class="secondary-button compact" id="resetSourceButton" type="button" data-copy="resetDefault">Reset default</button></div>
+    </section>
+
+    <section class="developer-section">
+      <div class="developer-section-head"><div><span class="developer-eyebrow" data-copy="technicalEyebrow">Digital slide</span><strong data-copy="metadataHeading">Whole-slide metadata</strong></div></div>
+      <dl class="metadata-grid developer-metadata">
+        <div><dt data-copy="dimensions">Dimensions</dt><dd id="dimensionsValue">—</dd></div>
+        <div><dt data-copy="resolution">Resolution</dt><dd id="resolutionValue">—</dd></div>
+        <div><dt data-copy="tileSize">Tile size</dt><dd id="tileSizeValue">—</dd></div>
+        <div><dt data-copy="physicalField">Physical field</dt><dd id="physicalFieldValue">—</dd></div>
+        <div><dt data-copy="layers">Layers</dt><dd id="layersValue">—</dd></div>
+        <div><dt data-copy="channels">Channels</dt><dd id="channelsValue">—</dd></div>
+        <div><dt data-copy="format">Format</dt><dd id="formatDisplay">—</dd></div>
+        <div><dt data-copy="native">Native</dt><dd id="nativeDisplay">—</dd></div>
+      </dl>
+    </section>
+
+    <section class="developer-section">
+      <div class="developer-section-head"><div><span class="developer-eyebrow" data-copy="associatedEyebrow">Associated image</span><strong data-copy="slideLabel">Slide label</strong></div></div>
+      <div class="associated-image-frame"><img id="barcodeImage" alt="Slide label / barcode" hidden /><div class="associated-placeholder" id="barcodePlaceholder">Available after connection</div></div>
+    </section>
+
+
+  </aside>
+</body>
+</html>

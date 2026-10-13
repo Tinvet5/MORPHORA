@@ -1,0 +1,12 @@
+MORPHORA Histology Library v0.8.2 — PMA → DZI Export Pipeline
+
+- Adds a zero-third-party-dependency PMA.start → static DZI exporter.
+- Preserves native slide geometry before producing a usable derivative.
+- Mirrors PMA pyramid tiles into standard DZI levels and renders missing overview levels through PMA regions.
+- Adds concurrent retrieval, retries, atomic writes and safe resume.
+- Adds Hueso-4 Windows preflight/export helpers.
+- Adds optional thumbnail/barcode export and a machine-readable export report.
+- Adds full DZI tile-presence validation.
+- Adds the exact current-slide export command to Histology Setup with one-click copy.
+- Keeps libvips tooling as an optional path for standard WSI formats.
+- No Supabase migration required.

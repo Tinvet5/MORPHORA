@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""MORPHORA V4.9.8 release-candidate audit.
+"""MORPHORA V5.0.5 release-candidate audit.
 
 This gate checks production invariants that are easy to regress while iterating:
 semantic landmarks, duplicate ids, basic accessible wiring, external-link safety,
@@ -191,7 +191,7 @@ def audit_i18n(audit: Audit) -> None:
     for key in sorted(required):
         for locale in LOCALES:
             if not dictionaries[locale].get(key):
-                audit.error(f"i18n/{locale}.json: missing V4.9.8 runtime key {key}")
+                audit.error(f"i18n/{locale}.json: missing V5.0.5 runtime key {key}")
 
     manager = (ROOT / "i18n/language-manager.js").read_text(encoding="utf-8")
     if 'event.key === "ArrowDown"' not in manager or 'event.key === "Home"' not in manager:
@@ -216,7 +216,7 @@ def audit_service_worker(audit: Audit) -> None:
         if not target.exists():
             audit.error(f"service-worker.js: APP_SHELL asset missing: {value}")
     required = {
-        "./index.html", "./app-config.js", "./release-meta.js", "./i18n/language-manager.js",
+        "./index.html", "./app-config.js", "./backend-config.js", "./backend/backend-client.js", "./release-meta.js", "./i18n/language-manager.js",
         "./i18n/en.json", "./i18n/es.json", "./accessibility.js", "./performance.js", "./style.css",
     }
     missing = sorted(required - set(entries))
@@ -281,8 +281,8 @@ def main() -> int:
     audit = Audit()
     package = read_json(ROOT / "package.json")
     version = str(package.get("version") or "")
-    if version != "4.9.8":
-        audit.error(f"package.json: V4.9.8 gate expected version 4.9.8; found {version!r}")
+    if version != "5.0.5":
+        audit.error(f"package.json: V5.0.5 gate expected version 5.0.5; found {version!r}")
 
     audit_html(audit, version)
     audit_versions(audit, version)

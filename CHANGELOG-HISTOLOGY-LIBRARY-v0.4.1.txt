@@ -1,0 +1,5 @@
+MORPHORA Histology Library v0.4.1
+- Fixed drawing backdrop intercepting slide pointer events.
+- Drawing drawer is non-modal during active annotation.
+- Strengthened pointer capture and touch/pen/mouse handling.
+- Bumped Histology asset cache identity to v0.4.1.

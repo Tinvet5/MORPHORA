@@ -16,7 +16,7 @@ ROOT = Path(__file__).resolve().parents[1]
 REPORT_DIR = ROOT / "reports"
 
 SHELL_FILES = [
-    "index.html", "style.css", "design-system.css", "app-config.js", "models.js", "storage.js", "performance.js",
+    "index.html", "style.css", "design-system.css", "app-config.js", "backend-config.js", "models.js", "storage.js", "backend/supabase-loader.js", "backend/backend-client.js", "backend/auth-service.js", "backend/profile-service.js", "backend/sync-service.js", "backend/data-service.js", "performance.js",
     "accessibility.js", "script.js", "study.js", "drawing.js", "navigation.js",
 ]
 
@@ -102,7 +102,7 @@ def main() -> int:
     REPORT_DIR.mkdir(exist_ok=True)
     (REPORT_DIR / "performance-static.json").write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
     lines = [
-        "MORPHORA V4.9 static performance audit",
+        "MORPHORA V5.0.5 static performance audit",
         f"Core shell: {shell_bytes / 1024:.1f} KiB",
         f"Thumbnails: {len(thumbnails)} files / {report['summary']['thumbnailBytes'] / 1024:.1f} KiB",
         f"Fallback images: {len(fallback_images)} files / {report['summary']['fallbackImageBytes'] / 1024 / 1024:.2f} MiB",

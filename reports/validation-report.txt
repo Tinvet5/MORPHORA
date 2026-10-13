@@ -1,5 +1,5 @@
-MORPHORA V4.9.8 — Project Validation Report
-Generated: 2026-10-02T23:49:24.114462+00:00
+MORPHORA V5.0.5 — Project Validation Report
+Generated: 2026-10-08T21:14:46.814097+00:00
 
 Errors: 0
 Warnings: 1
@@ -12,5 +12,5 @@ PASS
 - QUESTION_BANKS: Validated 1 custom question bank(s) and 0 authored question(s).
 - PROJECT_GRAPH: Traversed 1 species, 2 collection manifests and 6 views.
 - SCHEMA_VERSION: Canonical schema version 2 is enforced by repository schemas.
-- VERSION_CONSISTENCY: Runtime, release metadata and package version checked against 4.9.8.
+- VERSION_CONSISTENCY: Runtime, release metadata and package version checked against 5.0.5.
 - DEPLOYMENT_GATE: GitHub Pages deployment workflow is validation-gated and artifact-based.
